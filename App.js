@@ -5,13 +5,17 @@ import  Event  from "./src/Event";
 import Decay from "./src/Decay";
 import CreateAnimatedComp from "./src/CreateAnimatedComp";
 import ParentPanReasponder from "./src/ParentPanResponder";
+import CustomCreateAnimatedComp from "./src/CustomCreateAnimatedComp";
+import SetNativeProps from "./src/SetNativeProps";
 
 const App = () => {
   return (
       // <Event />
       // <Decay />
+      // <ParentPanReasponder/>
       // <CreateAnimatedComp/>
-      <ParentPanReasponder/>
+      <CustomCreateAnimatedComp/>
+      // <SetNativeProps/>
 
   );
 };
