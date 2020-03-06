@@ -5,7 +5,7 @@ The typical callback signature of React is event first, then additional properti
 Because a function would be called with (event, gestureState) => {}, the instructions to get data from event would need to be placed into the first array spot in Animated.event
 
 In the case of an onScroll from a ScrollView you need to provide a few levels of instructions.
-
+```
 <code class="js language-js">
 Animated.event([
 {
@@ -17,10 +17,11 @@ Animated.event([
 }
 ])
 </code>
+```
 If you don't need to reference anything off an event simply pass in null so that the argument call signature matches the array of instructions.
 
 In the case of a `PanResponder` you would skip the event piece with null and only provide instructions to automatically set animated values from gestureState
-
+```
 <code class="js language-js">
 Animated.event([
   null,
@@ -30,3 +31,4 @@ Animated.event([
   }
 ])
 </code>
+```
