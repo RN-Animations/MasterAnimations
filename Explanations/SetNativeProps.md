@@ -1,12 +1,12 @@
 ### Using and Understanding setNativeProps Explanation
 
-To understand how animated works you must first understand `setNativeProps`. This is what `Animated` uses to bypass setState. It sends new properties over the bridge directly to the native world.
+To understand how animated works you must first understand `setNativeProps`. This is what `Animated` uses to bypass `setState`. It sends new properties over the bridge directly to the native world.
 
 **DO NOTE**: if you use `setNativeProps` to set a prop on the native side, and then a `setState` happens and the prop you've set natively is set on the particular element it will be overridden, or unless you pass back the value you set on the native side.
 
 We'll be looking at trivial cases, however this is how Animated works. In the render it always derives the current prop values which are the same values it already sent to the native world using `setNativeProps`.
 
-Lets take a look at some code first. We setup a `ScrollView` with an animated background on scroll. In order to call `setNativeProps` we need to get access to the view instance and we do that by getting a ref.
+Lets take a look at some code first. We setup a `ScrollView` with an animated background on scroll. In order to call `setNativeProps` we need to get access to the view instance and we do that by getting a `ref`.
 ```
 <code class="js language-js">
 import React, { Component } from "react";
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
 ```
 Here is where the magic happens.
 
-Lets start first with just one setNativeProp call.
+Lets start first with just one `setNativeProp` call.
 ```
 <code class="js language-js">  
 handleToggle = () => {
@@ -99,12 +99,13 @@ handleToggle = () => {
 ```
 We have `this._enabled` default to true on our component instance. We then toggle it and call `setNativeProps` and pass in an object of props we want to set. In our case we are just setting a single one and that's scrollEnabled. This will allow us to lock scrolling capabilities.
 
-We can see it in action here, we lock the scroll without passing in a prop to our ScrollView, and without causing a setState to happen.
+We can see it in action here, we lock the scroll without passing in a prop to our `ScrollView`, and without causing a `setState` to happen.
 
 
-We can additionally override more than one prop at once, including the style prop. Understand though that you are REPLACING the prop in the native side. So if you have specific styling you need to preserve you will need to manage and send the entire new style, including the values you aren't overriding.
+We can additionally override more than one prop at once, including the style prop. Understand though that you are **REPLACING** the prop in the native side. So if you have specific styling you need to preserve you will need to manage and send the entire new style, including the values you aren't overriding.
 
 You can see that here, we create a style tag and pass in our `styles.scroll`, then whether or not we are disabled we pass in a hide or show styling which will toggle the opacity. We'll also still disable the scroll. This whole concept is foundational to how the JavaScript version of Animated works and how we can craft our own animations.
+
 ```
 <code class="js language-js">  
 handleToggle = () => {

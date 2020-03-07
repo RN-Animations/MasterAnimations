@@ -7,6 +7,7 @@ import CreateAnimatedComp from "./src/CreateAnimatedComp";
 import ParentPanReasponder from "./src/ParentPanResponder";
 import CustomCreateAnimatedComp from "./src/CustomCreateAnimatedComp";
 import SetNativeProps from "./src/SetNativeProps";
+import Hidden from "./src/Hidden";
 
 const App = () => {
   return (
@@ -14,8 +15,9 @@ const App = () => {
       // <Decay />
       // <ParentPanReasponder/>
       // <CreateAnimatedComp/>
-      <CustomCreateAnimatedComp/>
+      // <CustomCreateAnimatedComp/>
       // <SetNativeProps/>
+      <Hidden/>
 
   );
 };
