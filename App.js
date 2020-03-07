@@ -9,6 +9,7 @@ import CustomCreateAnimatedComp from "./src/CustomCreateAnimatedComp";
 import SetNativeProps from "./src/SetNativeProps";
 import Hidden from "./src/Hidden";
 import PointerEvents from "./src/PointerEvents";
+import $4Corners from "./src/4Corners";
 
 const App = () => {
   return (
@@ -19,7 +20,8 @@ const App = () => {
       // <CustomCreateAnimatedComp/>
       // <SetNativeProps/>
       // <Hidden/>
-      <PointerEvents/>
+      // <PointerEvents/>
+      <$4Corners/>
 
   );
 };
