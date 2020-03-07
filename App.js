@@ -10,6 +10,7 @@ import SetNativeProps from "./src/SetNativeProps";
 import Hidden from "./src/Hidden";
 import PointerEvents from "./src/PointerEvents";
 import $4Corners from "./src/4Corners";
+import StaggerHeads from "./src/StaggerHeads";
 
 const App = () => {
   return (
@@ -21,7 +22,8 @@ const App = () => {
       // <SetNativeProps/>
       // <Hidden/>
       // <PointerEvents/>
-      <$4Corners/>
+      // <$4Corners/>
+      <StaggerHeads/>
 
   );
 };
