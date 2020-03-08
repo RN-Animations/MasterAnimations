@@ -11,6 +11,7 @@ import Hidden from "./src/Hidden";
 import PointerEvents from "./src/PointerEvents";
 import $4Corners from "./src/4Corners";
 import StaggerHeads from "./src/StaggerHeads";
+import KittenCards from "./src/KittenCards";
 
 const App = () => {
   return (
@@ -23,7 +24,8 @@ const App = () => {
       // <Hidden/>
       // <PointerEvents/>
       // <$4Corners/>
-      <StaggerHeads/>
+      // <StaggerHeads/>
+      <KittenCards/>
 
   );
 };
