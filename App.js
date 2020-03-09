@@ -13,6 +13,7 @@ import $4Corners from "./src/4Corners";
 import StaggerHeads from "./src/StaggerHeads";
 import KittenCards from "./src/KittenCards";
 import StaggerFormFields from "./src/StaggerFormFields";
+import ButtonWithProgress from "./src/ButtonWithProgress";
 
 const App = () => {
   return (
@@ -27,7 +28,8 @@ const App = () => {
       // <$4Corners/>
       // <StaggerHeads/>
       // <KittenCards/>
-      <StaggerFormFields/>
+      // <StaggerFormFields/>
+      <ButtonWithProgress/>
 
   );
 };
