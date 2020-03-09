@@ -12,6 +12,7 @@ import PointerEvents from "./src/PointerEvents";
 import $4Corners from "./src/4Corners";
 import StaggerHeads from "./src/StaggerHeads";
 import KittenCards from "./src/KittenCards";
+import StaggerFormFields from "./src/StaggerFormFields";
 
 const App = () => {
   return (
@@ -25,7 +26,8 @@ const App = () => {
       // <PointerEvents/>
       // <$4Corners/>
       // <StaggerHeads/>
-      <KittenCards/>
+      // <KittenCards/>
+      <StaggerFormFields/>
 
   );
 };
