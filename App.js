@@ -14,6 +14,8 @@ import StaggerHeads from "./src/StaggerHeads";
 import KittenCards from "./src/KittenCards";
 import StaggerFormFields from "./src/StaggerFormFields";
 import ButtonWithProgress from "./src/ButtonWithProgress";
+import AnimatedQuestionnaire from "./src/AnimatedQuestionnaire";
+import $2nd_AnimatedQuestionnaire from "./src/$2nd_AnimatedQuestionnaire";
 
 const App = () => {
   return (
@@ -29,7 +31,9 @@ const App = () => {
       // <StaggerHeads/>
       // <KittenCards/>
       // <StaggerFormFields/>
-      <ButtonWithProgress/>
+      // <ButtonWithProgress/>
+      // <AnimatedQuestionnaire/>
+      <$2nd_AnimatedQuestionnaire/>
 
   );
 };
