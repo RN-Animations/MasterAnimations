@@ -16,6 +16,7 @@ import StaggerFormFields from "./src/StaggerFormFields";
 import ButtonWithProgress from "./src/ButtonWithProgress";
 import AnimatedQuestionnaire from "./src/AnimatedQuestionnaire";
 import $2nd_AnimatedQuestionnaire from "./src/$2nd_AnimatedQuestionnaire";
+import AnimatedNotification from "./src/AnimatedNotification";
 
 const App = () => {
   return (
@@ -33,7 +34,8 @@ const App = () => {
       // <StaggerFormFields/>
       // <ButtonWithProgress/>
       // <AnimatedQuestionnaire/>
-      <$2nd_AnimatedQuestionnaire/>
+      // <$2nd_AnimatedQuestionnaire/>
+      <AnimatedNotification/>
 
   );
 };
