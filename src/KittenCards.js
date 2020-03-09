@@ -48,7 +48,7 @@ export default class KittenCards extends Component {
     ],
     animation: new Animated.ValueXY(), // cards swipe location
     opacity: new Animated.Value(1),
-    next: new Animated.Value(0.9), // For the second card.
+    next: new Animated.Value(0.9), // For the second card ( a bit smaller).
   };
 
   UNSAFE_componentWillMount() {
@@ -68,7 +68,7 @@ export default class KittenCards extends Component {
         let velocity;
 
         if (vx >= 0) {
-            // 3 is minimum and 5 is
+            // 3 is minimum and 5 is max
           velocity = clamp(vx, 3, 5);
         } else if (vx < 0) {
           velocity = clamp(Math.abs(vx), 3, 5) * -1;
@@ -100,12 +100,21 @@ export default class KittenCards extends Component {
         friction: 4
       }),
     ]).start(() => {
+      /* 
+      setState() does not always immediately update the component. 
+      It may batch or defer the update until later. 
+      This makes reading this.state right after calling setState() 
+      a potential pitfall. Instead, use componentDidUpdate or 
+      a setState callback (setState(updater, callback)), 
+      either of which are guaranteed to fire after the update has been applied. 
+      */
       this.setState(
         state => {
           return {
             items: state.items.slice(1),
           };
         },
+        // setState callback 
         () => {
             // reset the values for the next card
           this.state.next.setValue(0.9);
