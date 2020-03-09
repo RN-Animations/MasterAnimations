@@ -40,28 +40,30 @@ export default class StaggerHeads extends Component {
       onMoveShouldSetPanResponder: () => true,
       onPanResponderGrant: () => {
         this.state.heads.map(({ animation }) => {
-           // `extractOffset` takes the delta values from the `gestureState`,
-           // and moves them in the `offset`,
-           // before they override the animated values.
-           // So we save the position that the animation is currently at. 
+          // `extractOffset` takes the delta values from the `gestureState`,
+          // and moves them in the `offset`,
+          // before they override the animated values.
+          // So we save the position that the animation is currently at.
           animation.extractOffset();
           // setValue Animated bug fix
-          animation.setValue({ x: 0, y: 0 });
-          // But because we have 4 offsets we'll `map` them and extract them. 
-           // (see `onPanResponderMove`)
-            /* Note when we call `extractOffset` the value is extracted synchronously.
+          /* When we call `extractOffset` the value is extracted synchronously.
           It's not going through `setValue`, that would stop every other animation,
           So if the `animation.Spring` doesn't come to a rest and then you start another,
-          the heads will jump around.
+          the heads will jump around. That is why we use setValue.
            */
+          animation.setValue({ x: 0, y: 0 });
+          // But because we have 4 offsets we'll `map` them and extract them.
+          // (see `onPanResponderMove`)
         });
       },
       onPanResponderMove: (e, { dx, dy }) => {
+        // move the first head
         this.state.heads[0].animation.setValue({
           x: dx,
           y: dy
         });
 
+        // make the other heads follow
         const animations = this.state.heads
           .slice(1)
           .map(({ animation }, index) => {
