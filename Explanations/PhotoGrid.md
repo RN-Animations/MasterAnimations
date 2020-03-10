@@ -396,3 +396,8 @@ This technique is basically creating an empty View which is our topContent view.
 Ending
 
 This works well for images, however there are cases where you want to do text, etc. This gets even more complicated but is still possible. The simple naive solution that a lot of people use is to snapshot a view (turn it into an image), and then morph it to it's destination and then swap in the actual content.
+
+
+[measure(callback)](https://reactnative.dev/docs/direct-manipulation#measurecallback)
+
+[pointerEvents](https://reactnative.dev/docs/view#pointerevents)
