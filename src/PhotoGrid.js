@@ -184,15 +184,9 @@ export default class PhotoGrid extends Component {
           <View
             style={styles.topContent}
             // to get the measurements of the space we want to occupy
-            ref={image => (this._viewImage = image)}
-          >
-            <Animated.Image
-              key={this.state.activeImage} // clear the cash everytime we toggle an image
-              source={this.state.activeImage}
-              resizeMode="cover" // the same as the other above!!!
-              style={[styles.viewImage, activeImageStyle]}
-            />
-          </View>
+            ref={image => (this._viewImage = image)} // does not work for android
+            onLayout={() => {}} // this tells React that we need access to the measurements
+          ></View>
 
           <Animated.View style={[styles.content, animatedContentStyles]}>
             <Text style={styles.title}>Pretty Image from Unsplash</Text>
@@ -209,12 +203,19 @@ export default class PhotoGrid extends Component {
               purus orci viverra metus, eget finibus neque turpis sed turpis.
             </Text>
           </Animated.View>
-          <TouchableWithoutFeedback onPress={this.handleClose}>
-            <Animated.View style={[styles.close, animatedCloseStyle]}>
-              <Text style={styles.closeText}>X</Text>
-            </Animated.View>
-          </TouchableWithoutFeedback>
         </View>
+        {/* Move it to the root view, so the animation will work fine also in android */}
+        <Animated.Image
+          key={this.state.activeImage} // clear the cash everytime we toggle an image
+          source={this.state.activeImage}
+          resizeMode="cover" // the same as the other above!!!
+          style={[styles.viewImage, activeImageStyle]}
+        />
+        <TouchableWithoutFeedback onPress={this.handleClose}>
+          <Animated.View style={[styles.close, animatedCloseStyle]}>
+            <Text style={styles.closeText}>X</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback>
       </View>
     );
   }

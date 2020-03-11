@@ -18,7 +18,7 @@ Setup
 First off we need a grid of pretty images. I went on Unsplash and got a bunch then resized them to be smaller in size. The size is crucial here as we don't want to pipe in 20 5mb photos into any mobile device.
 
 We also setup this.gridImages = {} in our componentWillMount. This will be used to store all of our refs. We'll use these refs to get the page location, and dimensions of each image.
-
+````
 <code class="js language-js">import React, { Component } from "react";
 import {
   AppRegistry,
@@ -62,19 +62,23 @@ const styles = StyleSheet.create({
  
 AppRegistry.registerComponent("animations", () => animations);
 </code>
+```
 Build a Grid
 
 Here we create a ScrollView, we could use a FlatList if you're worried about performance, but the concepts still apply.
 
 If we currently have an active image we'll toggle the opacity so it really looks like the image is being blown up into it's final position.
-
-<code class="js language-js">    const activeIndexStyle = {
+```
+<code class="js language-js">    
+const activeIndexStyle = {
       opacity: this.state.activeImage ? 0 : 1
     }
 </code>
+```
 We map over them, and apply our opacity style if we have found our active index. Additionally we save off the ref to the image so we can measure the size of our image later.
-
-<code class="js language-js"><ScrollView style={styles.container}>
+```
+<code class="js language-js">
+<ScrollView style={styles.container}>
   <View style={styles.grid}>
     {images.map((src, index) => {
  
@@ -94,8 +98,9 @@ We map over them, and apply our opacity style if we have found our active index.
   </View>
 </ScrollView>
 </code>
+```
 The grid just uses flexDirection: "row" and tells the container to wrap the content. Then each image is given a width of 33% so we can fit 3 images on each row. You can use this technique with one, two, or any number of images.
-
+```
 <code class="js language-js">container: {
     flex: 1,
   },
@@ -108,14 +113,15 @@ The grid just uses flexDirection: "row" and tells the container to wrap the cont
     height: 150,
   },
 </code>
+```
 Add a Modal View
 
 The next thing we need to do is create our target modal view. This will consist of a top image, and a lower view of text.
 
-The key to this whole thing working is using our pointerEvents toggle technique. This view is always active, the only piece that is hidden is the lower content that has an opacity when it is in active. Additionally when we don't have an activeImage there is nothing in the space.
+The key to this whole thing working is using our `pointerEvents` toggle technique. This view is always active, the only piece that is hidden is the lower content that has an opacity when it is in active. Additionally when we don't have an activeImage there is nothing in the space.
 
 This allows for your view to always be present, but until we have an activeImage it can't be interacted with and all touches will pass through to the underlying grid.
-
+```
 <code class="js language-js"><View
   style={StyleSheet.absoluteFill}
   pointerEvents={this.state.activeImage ? "auto" : "none"}
@@ -152,6 +158,7 @@ This allows for your view to always be present, but until we have an activeImage
   </TouchableWithoutFeedback>
 </View>
 </code>
+```
 Animate To The Modal Open
 
 Alright now we need to talk about executing the shared element. The process will be
@@ -162,7 +169,8 @@ The key to point out here is we are measuring the view wrapping the image. This 
 
 So first measure the dimensions of the index of the image that was pressed. We are dealing with animated views so we need to call getNode() to access the actual view ref so we can call measure.
 
-<code class="js language-js">this._gridImages[index].getNode().measure((x, y, width, height, pageX, pageY) => {
+<code class="js language-js">
+this._gridImages[index].getNode().measure((x, y, width, height, pageX, pageY) => {
  
 });
 </code>
