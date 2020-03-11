@@ -20,7 +20,7 @@ export default class ColorPicker extends Component {
     animation: new Animated.Value(0), // open/close animation
     buttonAnimation: new Animated.Value(0),
     color: "#000", // drive the value in the input
-    inputOpen: false,
+    inputOpen: false
   };
 
   handleToggle = () => {
@@ -41,9 +41,16 @@ export default class ColorPicker extends Component {
 
     this._inputOpen = !this._inputOpen;
 
-    this.setState({
+    this.setState(
+      {
         inputOpen: this._inputOpen
-    })
+      },
+      () => {
+        !this.state.inputOpen
+          ? this._input.getNode().blur()
+          : this._input.getNode().focus();
+      }
+    );
   };
 
   render() {
@@ -102,13 +109,13 @@ export default class ColorPicker extends Component {
     const opacityIconInterpolate = this.state.buttonAnimation.interpolate({
       inputRange: [0, 0.2],
       outputRange: [1, 0],
-      extrapolate: 'clamp'
+      extrapolate: "clamp"
     });
 
     const iconStyle = {
-        opacity: opacityIconInterpolate,
-        translateX: iconTranslate
-    }
+      opacity: opacityIconInterpolate,
+      translateX: iconTranslate
+    };
     const inputStyle = {
       opacity: inputOpacityInterpolate
     };
@@ -162,7 +169,7 @@ export default class ColorPicker extends Component {
             So we use pointerEvents. */}
             <Animated.View
               style={[StyleSheet.absoluteFill, styles.colorRowWrap]}
-              pointerEvents={this.state.inputOpen ? 'auto' : 'none'}
+              pointerEvents={this.state.inputOpen ? "auto" : "none"}
             >
               <AnimatedTextInput
                 style={[styles.input, inputStyle]}
@@ -170,7 +177,7 @@ export default class ColorPicker extends Component {
                 onChangeText={color => this.setState({ color })}
                 ref={input => (this._input = input)}
               />
-              <TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={this.toggleInput} >
                 {/* Button */}
                 <Animated.View style={[styles.okayButton, buttonStyle]}>
                   <Text style={styles.okayText}>OK</Text>
