@@ -40,6 +40,9 @@ export default class PhotoGrid extends Component {
 
   handleOpenImage = index => {
     // get access to the ref and call measure on it
+    // Note: In the given code we use getNode(), like:
+    // this._gridImages[index].getNode().measure(...)
+    // But I get an error!
     this._gridImages[index].measure((x, y, width, height, pageX, pageY) => {
       // we need to save off the previous values, to animate back
       this._x = pageX;
