@@ -12,7 +12,7 @@ import {
 
 import images from "../utilities/images";
 
-// Here is a way to do shared absolute positioning!  
+// Here is a way to do shared absolute positioning!
 /* In RN you can measure any element. It will return:
 x
 y
@@ -38,7 +38,7 @@ export default class PhotoGrid extends Component {
     this._gridImages = {};
   }
 
-  handleOpenImage = (index) => {
+  handleOpenImage = index => {
     // get access to the ref and call measure on it
     this._gridImages[index].measure((x, y, width, height, pageX, pageY) => {
       // we need to save off the previous values, to animate back
@@ -51,45 +51,75 @@ export default class PhotoGrid extends Component {
       this.state.position.setValue({
         x: pageX,
         y: pageY
-      })
+      });
 
       this.state.size.setValue({
         x: width,
         y: height
-      })
+      });
 
       // why we call setState in the measure func?
       // ready to animate
-      this.setState({
-        activeImage: images[index],
-        activeIndex: index
-      },
-      // this callback is equivalent to componentDidUpdate 
-      // Here the image has appeared
-      () => {
-        this._viewImage.measure((tX, tY, tWidth, tHeight, tPageX, tPageY) => {
-
-          Animated.parallel([
-            Animated.spring(this.state.position.x, {
-              toValue: tPageX
-            }),
-            Animated.spring(this.state.position.y, {
-              toValue: tPageY
-            }),
-            Animated.spring(this.state.size.x, {
-              toValue: tWidth
-            }),
-            Animated.spring(this.state.size.y, {
-              toValue: tHeight
-            }),
-            Animated.spring(this.state.animation, {
-              toValue: 1
-            }),
-          ]).start()
-        })
-      })
+      this.setState(
+        {
+          activeImage: images[index],
+          activeIndex: index
+        },
+        // this callback is equivalent to componentDidUpdate
+        // Here the image has appeared
+        () => {
+          this._viewImage.measure((tX, tY, tWidth, tHeight, tPageX, tPageY) => {
+            Animated.parallel([
+              Animated.spring(this.state.position.x, {
+                toValue: tPageX
+              }),
+              Animated.spring(this.state.position.y, {
+                toValue: tPageY
+              }),
+              Animated.spring(this.state.size.x, {
+                toValue: tWidth
+              }),
+              Animated.spring(this.state.size.y, {
+                toValue: tHeight
+              }),
+              Animated.spring(this.state.animation, {
+                toValue: 1
+              })
+            ]).start();
+          });
+        }
+      );
     });
-  }
+  };
+
+  handleClose = () => {
+    Animated.parallel([
+      Animated.timing(this.state.position.x, {
+        toValue: this._x,
+        duration: 250
+      }),
+      Animated.timing(this.state.position.y, {
+        toValue: this._y,
+        duration: 250
+      }),
+      Animated.timing(this.state.size.x, {
+        toValue: this._width,
+        duration: 250
+      }),
+      Animated.timing(this.state.size.y, {
+        toValue: this._height,
+        duration: 250
+      }),
+      Animated.timing(this.state.animation, {
+        toValue: 0,
+        duration: 250
+      })
+    ]).start(() => {
+      this.setState({
+        activeImage: null
+      });
+    });
+  };
 
   render() {
     const animatedContentTranslate = this.state.animation.interpolate({
@@ -111,20 +141,24 @@ export default class PhotoGrid extends Component {
       height: this.state.size.y,
       top: this.state.position.y,
       left: this.state.position.x
-    }
+    };
 
     // We don't animate this. We want it to be instant!
     const activeIndexStyle = {
       opacity: this.state.activeImage ? 0 : 1
-    }
+    };
 
+    const animatedCloseStyle = {
+      opacity: this.state.animation
+    };
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container}>
           <View style={styles.grid}>
             {/* If we would add images dynamically, then they should be on state. */}
             {images.map((src, index) => {
-              const style = index === this.state.activeIndex ? activeIndexStyle : undefined
+              const style =
+                index === this.state.activeIndex ? activeIndexStyle : undefined;
               return (
                 <TouchableWithoutFeedback
                   key={index}
@@ -146,37 +180,41 @@ export default class PhotoGrid extends Component {
           style={StyleSheet.absoluteFill}
           pointerEvents={this.state.activeImage ? "auto" : "none"}
         >
-            {/* This View takes the space we want to occupy with Animated.Image*/}
-            <View
-              style={styles.topContent}
-              // to get the measurements of the space we want to occupy
-              ref={image => (this._viewImage = image)}
-            >
-              <Animated.Image
-                key={this.state.activeImage} // clear the cash everytime we toggle an image
-                source={this.state.activeImage}
-                resizeMode="cover" // the same as the other above!!!
-                style={[styles.viewImage, activeImageStyle]}
-              />
-            </View>
-
-            <Animated.View style={[styles.content, animatedContentStyles]}>
-              <Text style={styles.title}>Pretty Image from Unsplash</Text>
-              <Text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                lobortis interdum porttitor. Nam lorem justo, aliquam id feugiat
-                quis, malesuada sit amet massa. Sed fringilla lorem sit amet
-                metus convallis, et vulputate mauris convallis. Donec venenatis
-                tincidunt elit, sed molestie massa. Fusce scelerisque nulla
-                vitae mollis lobortis. Ut bibendum risus ac rutrum lacinia.
-                Proin vel viverra tellus, et venenatis massa. Maecenas ac
-                gravida purus, in porttitor nulla. Integer vitae dui tincidunt,
-                blandit felis eu, fermentum lorem. Mauris condimentum, lorem id
-                convallis fringilla, purus orci viverra metus, eget finibus
-                neque turpis sed turpis.
-              </Text>
-            </Animated.View>
+          {/* This View takes the space we want to occupy with Animated.Image*/}
+          <View
+            style={styles.topContent}
+            // to get the measurements of the space we want to occupy
+            ref={image => (this._viewImage = image)}
+          >
+            <Animated.Image
+              key={this.state.activeImage} // clear the cash everytime we toggle an image
+              source={this.state.activeImage}
+              resizeMode="cover" // the same as the other above!!!
+              style={[styles.viewImage, activeImageStyle]}
+            />
           </View>
+
+          <Animated.View style={[styles.content, animatedContentStyles]}>
+            <Text style={styles.title}>Pretty Image from Unsplash</Text>
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+              lobortis interdum porttitor. Nam lorem justo, aliquam id feugiat
+              quis, malesuada sit amet massa. Sed fringilla lorem sit amet metus
+              convallis, et vulputate mauris convallis. Donec venenatis
+              tincidunt elit, sed molestie massa. Fusce scelerisque nulla vitae
+              mollis lobortis. Ut bibendum risus ac rutrum lacinia. Proin vel
+              viverra tellus, et venenatis massa. Maecenas ac gravida purus, in
+              porttitor nulla. Integer vitae dui tincidunt, blandit felis eu,
+              fermentum lorem. Mauris condimentum, lorem id convallis fringilla,
+              purus orci viverra metus, eget finibus neque turpis sed turpis.
+            </Text>
+          </Animated.View>
+          <TouchableWithoutFeedback onPress={this.handleClose}>
+            <Animated.View style={[styles.close, animatedCloseStyle]}>
+              <Text style={styles.closeText}>X</Text>
+            </Animated.View>
+          </TouchableWithoutFeedback>
+        </View>
       </View>
     );
   }
@@ -192,7 +230,7 @@ const styles = StyleSheet.create({
   },
   gridImage: {
     width: "33%",
-    height: 150 // actually calculate per screen size 
+    height: 150 // actually calculate per screen size
   },
   // these will be overriden when animation runs
   viewImage: {
