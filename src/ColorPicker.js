@@ -19,7 +19,8 @@ export default class ColorPicker extends Component {
   state = {
     animation: new Animated.Value(0), // open/close animation
     buttonAnimation: new Animated.Value(0),
-    color: "#000" // drive the value in the input
+    color: "#000", // drive the value in the input
+    inputOpen: false,
   };
 
   handleToggle = () => {
@@ -34,11 +35,15 @@ export default class ColorPicker extends Component {
   toggleInput = () => {
     const toValue = this._inputOpen ? 0 : 1;
     Animated.timing(this.state.buttonAnimation, {
-      toValue, 
+      toValue,
       duration: 350
     }).start();
 
     this._inputOpen = !this._inputOpen;
+
+    this.setState({
+        inputOpen: this._inputOpen
+    })
   };
 
   render() {
@@ -83,15 +88,38 @@ export default class ColorPicker extends Component {
         }
       ]
     };
+
+    const inputOpacityInterpolate = this.state.buttonAnimation.interpolate({
+      inputRange: [0, 0.8, 1],
+      outputRange: [0, 0, 1]
+    });
+
+    const iconTranslate = this.state.buttonAnimation.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, -20]
+    });
+
+    const opacityIconInterpolate = this.state.buttonAnimation.interpolate({
+      inputRange: [0, 0.2],
+      outputRange: [1, 0],
+      extrapolate: 'clamp'
+    });
+
+    const iconStyle = {
+        opacity: opacityIconInterpolate,
+        translateX: iconTranslate
+    }
+    const inputStyle = {
+      opacity: inputOpacityInterpolate
+    };
     const colorStyle = {
       backgroundColor: this.state.color
     };
-    const iconStyle = {};
 
     return (
       <View style={styles.container}>
         <Animated.View style={[styles.rowWrap, rowStyle]}>
-          <TouchableWithoutFeedback onPress={this.toggleInput} >
+          <TouchableWithoutFeedback onPress={this.toggleInput}>
             <Animated.View
               style={[styles.colorBall, colorStyle]}
             ></Animated.View>
@@ -130,10 +158,18 @@ export default class ColorPicker extends Component {
               />
               {/* Text input */}
             </TouchableOpacity>
+            {/* Because of StyleSheet.absoluteFill icons cannot be touched.
+            So we use pointerEvents. */}
             <Animated.View
               style={[StyleSheet.absoluteFill, styles.colorRowWrap]}
+              pointerEvents={this.state.inputOpen ? 'auto' : 'none'}
             >
-              <AnimatedTextInput style={styles.input} />
+              <AnimatedTextInput
+                style={[styles.input, inputStyle]}
+                value={this.state.color}
+                onChangeText={color => this.setState({ color })}
+                ref={input => (this._input = input)}
+              />
               <TouchableWithoutFeedback>
                 {/* Button */}
                 <Animated.View style={[styles.okayButton, buttonStyle]}>
