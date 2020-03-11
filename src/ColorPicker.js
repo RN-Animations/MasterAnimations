@@ -31,18 +31,58 @@ export default class ColorPicker extends Component {
     this._open = !this._open;
   };
 
-  toggleInput = () => {};
+  toggleInput = () => {
+    const toValue = this._inputOpen ? 0 : 1;
+    Animated.timing(this.state.buttonAnimation, {
+      toValue, 
+      duration: 350
+    }).start();
+
+    this._inputOpen = !this._inputOpen;
+  };
 
   render() {
+    const scaleXInterpolate = this.state.animation.interpolate({
+      // execute animation after half of it (.5) is completed
+      inputRange: [0, 0.5, 1],
+      outputRange: [0, 0, 1]
+    });
+
+    const translateYInterpolate = this.state.animation.interpolate({
+      inputRange: [0, 1],
+      outputRange: [150, 0]
+    });
+
     const rowStyle = {
       opacity: this.state.animation,
       transform: [
+        {
+          translateY: translateYInterpolate
+        },
+        {
+          scaleX: scaleXInterpolate
+        },
         {
           scaleY: this.state.animation
         }
       ]
     };
 
+    const moveInterpolate = this.state.buttonAnimation.interpolate({
+      inputRange: [0, 1],
+      outputRange: [-150, 0]
+    });
+
+    const buttonStyle = {
+      transform: [
+        {
+          translateX: moveInterpolate
+        },
+        {
+          scale: this.state.buttonAnimation
+        }
+      ]
+    };
     const colorStyle = {
       backgroundColor: this.state.color
     };
@@ -51,7 +91,7 @@ export default class ColorPicker extends Component {
     return (
       <View style={styles.container}>
         <Animated.View style={[styles.rowWrap, rowStyle]}>
-          <TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={this.toggleInput} >
             <Animated.View
               style={[styles.colorBall, colorStyle]}
             ></Animated.View>
@@ -96,7 +136,7 @@ export default class ColorPicker extends Component {
               <AnimatedTextInput style={styles.input} />
               <TouchableWithoutFeedback>
                 {/* Button */}
-                <Animated.View style={styles.okayButton}>
+                <Animated.View style={[styles.okayButton, buttonStyle]}>
                   <Text style={styles.okayText}>OK</Text>
                 </Animated.View>
               </TouchableWithoutFeedback>
