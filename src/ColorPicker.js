@@ -22,36 +22,85 @@ export default class ColorPicker extends Component {
     color: "#000" // drive the value in the input
   };
 
-  handleToggle = () => {};
+  handleToggle = () => {
+    const toValue = this._open ? 0 : 1;
+    Animated.spring(this.state.animation, {
+      toValue
+    }).start();
+
+    this._open = !this._open;
+  };
 
   toggleInput = () => {};
 
   render() {
+    const rowStyle = {
+      opacity: this.state.animation,
+      transform: [
+        {
+          scaleY: this.state.animation
+        }
+      ]
+    };
+
     const colorStyle = {
       backgroundColor: this.state.color
     };
-    const iconStyle = {
-    };
+    const iconStyle = {};
 
     return (
       <View style={styles.container}>
-        <Animated.View style={styles.rowWrap}>
+        <Animated.View style={[styles.rowWrap, rowStyle]}>
           <TouchableWithoutFeedback>
-            <Animated.View style={[styles.colorBall, colorStyle]}></Animated.View>
+            <Animated.View
+              style={[styles.colorBall, colorStyle]}
+            ></Animated.View>
           </TouchableWithoutFeedback>
-          <View style={styles.row} >
+          <View style={styles.row}>
             <TouchableOpacity>
-              <AnimatedIcon name="bold" size={30} color="#555" style={iconStyle} />
+              <AnimatedIcon
+                name="bold"
+                size={30}
+                color="#555"
+                style={iconStyle}
+              />
             </TouchableOpacity>
             <TouchableOpacity>
-              <AnimatedIcon name="italic" size={30} color="#555" style={iconStyle} />
+              <AnimatedIcon
+                name="italic"
+                size={30}
+                color="#555"
+                style={iconStyle}
+              />
             </TouchableOpacity>
             <TouchableOpacity>
-              <AnimatedIcon name="align-center" size={30} color="#555" style={iconStyle} />
+              <AnimatedIcon
+                name="align-center"
+                size={30}
+                color="#555"
+                style={iconStyle}
+              />
             </TouchableOpacity>
             <TouchableOpacity>
-              <AnimatedIcon name="link" size={30} color="#555" style={iconStyle} />
-            </TouchableOpacity> 
+              <AnimatedIcon
+                name="link"
+                size={30}
+                color="#555"
+                style={iconStyle}
+              />
+              {/* Text input */}
+            </TouchableOpacity>
+            <Animated.View
+              style={[StyleSheet.absoluteFill, styles.colorRowWrap]}
+            >
+              <AnimatedTextInput style={styles.input} />
+              <TouchableWithoutFeedback>
+                {/* Button */}
+                <Animated.View style={styles.okayButton}>
+                  <Text style={styles.okayText}>OK</Text>
+                </Animated.View>
+              </TouchableWithoutFeedback>
+            </Animated.View>
           </View>
         </Animated.View>
         <TouchableOpacity onPress={this.handleToggle} style={styles.button}>
