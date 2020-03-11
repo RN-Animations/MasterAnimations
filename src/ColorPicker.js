@@ -7,7 +7,7 @@ import {
   Animated,
   TextInput,
   TouchableOpacity,
-  TouchableWithoutFeedback,
+  TouchableWithoutFeedback
 } from "react-native";
 
 import Icon from "react-native-vector-icons/Foundation";
@@ -17,22 +17,43 @@ const AnimatedIcon = Animated.createAnimatedComponent(Icon);
 
 export default class ColorPicker extends Component {
   state = {
-    
+    animation: new Animated.Value(0), // open/close animation
+    buttonAnimation: new Animated.Value(0),
+    color: "#000" // drive the value in the input
   };
 
-  handleToggle = () => {
-   
-  };
+  handleToggle = () => {};
 
-  toggleInput = () => {
-
-  };
+  toggleInput = () => {};
 
   render() {
-   
+    const colorStyle = {
+      backgroundColor: this.state.color
+    };
+    const iconStyle = {
+    };
 
     return (
       <View style={styles.container}>
+        <Animated.View style={styles.rowWrap}>
+          <TouchableWithoutFeedback>
+            <Animated.View style={[styles.colorBall, colorStyle]}></Animated.View>
+          </TouchableWithoutFeedback>
+          <View style={styles.row} >
+            <TouchableOpacity>
+              <AnimatedIcon name="bold" size={30} color="#555" style={iconStyle} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <AnimatedIcon name="italic" size={30} color="#555" style={iconStyle} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <AnimatedIcon name="align-center" size={30} color="#555" style={iconStyle} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <AnimatedIcon name="link" size={30} color="#555" style={iconStyle} />
+            </TouchableOpacity> 
+          </View>
+        </Animated.View>
         <TouchableOpacity onPress={this.handleToggle} style={styles.button}>
           <Text>Toggle Open/Closed</Text>
         </TouchableOpacity>
@@ -45,7 +66,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   rowWrap: {
     flexDirection: "row",
@@ -58,23 +79,23 @@ const styles = StyleSheet.create({
     shadowOffset: { x: 2, y: 2 },
     shadowRadius: 3,
     paddingVertical: 5,
-    paddingHorizontal: 10,
+    paddingHorizontal: 10
   },
   row: {
     flex: 1,
     alignItems: "center",
     justifyContent: "space-around",
     flexDirection: "row",
-    overflow: "hidden",
+    overflow: "hidden"
   },
 
   colorRowWrap: {
     flexDirection: "row",
     flex: 1,
-    paddingLeft: 5,
+    paddingLeft: 5
   },
   input: {
-    flex: 1,
+    flex: 1
   },
   okayButton: {
     borderRadius: 20,
@@ -82,20 +103,19 @@ const styles = StyleSheet.create({
     width: 40,
     backgroundColor: "#309EEB",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   okayText: {
-    color: "#FFF",
+    color: "#FFF"
   },
   colorBall: {
     width: 15,
     height: 15,
-    borderRadius: 8,
+    borderRadius: 8
   },
   button: {
-    marginTop: 50,
-  },
+    marginTop: 50
+  }
 });
-
 
 console.disableYellowBox = true;
