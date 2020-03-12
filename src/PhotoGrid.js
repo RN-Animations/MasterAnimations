@@ -10,7 +10,7 @@ import {
   TouchableWithoutFeedback
 } from "react-native";
 
-import images from "../utilities/images";
+import images from "../utilities/imagesForPhotoGrid";
 
 // Here is a way to do shared absolute positioning!
 /* In RN you can measure any element. It will return:
