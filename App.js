@@ -20,6 +20,7 @@ import AnimatedNotification from "./src/AnimatedNotification";
 import PhotoGrid from "./src/PhotoGrid";
 import ColorPicker from "./src/ColorPicker";
 import FabButtonMenu from "./src/FabButtonMenu";
+import IntroScreens from "./src/IntroScreens";
 
 const App = () => {
   return (
@@ -41,7 +42,8 @@ const App = () => {
       // <AnimatedNotification/>
       // <PhotoGrid/>
       // <ColorPicker/>
-      <FabButtonMenu/>
+      // <FabButtonMenu/>
+      <IntroScreens/>
 
   );
 };
