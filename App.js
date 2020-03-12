@@ -19,6 +19,7 @@ import $2nd_AnimatedQuestionnaire from "./src/$2nd_AnimatedQuestionnaire";
 import AnimatedNotification from "./src/AnimatedNotification";
 import PhotoGrid from "./src/PhotoGrid";
 import ColorPicker from "./src/ColorPicker";
+import FabButtonMenu from "./src/FabButtonMenu";
 
 const App = () => {
   return (
@@ -39,7 +40,8 @@ const App = () => {
       // <$2nd_AnimatedQuestionnaire/>
       // <AnimatedNotification/>
       // <PhotoGrid/>
-      <ColorPicker/>
+      // <ColorPicker/>
+      <FabButtonMenu/>
 
   );
 };
