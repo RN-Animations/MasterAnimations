@@ -105,13 +105,10 @@ export default class IntroScreens extends Component {
     const screen1Styles = getScreen1Styles(this.state.animation, width);
     const screen2Styles = getScreen2Styles(this.state.animation, width);
     const screen3Styles = getScreen3Styles(this.state.animation, width);
-
-    return (
-      <View style={styles.container}>
-          /* pagingEnabled
+    /*  pagingEnabled
         When true, the scroll view stops on multiples of the scroll view's size when scrolling. This can be used for horizontal pagination. The default value is false.
-        Note: Vertical pagination is not supported on Android. */
-        /* onScroll
+        Note: Vertical pagination is not supported on Android. 
+        onScroll
         Fires at most once per frame during scrolling. The frequency of the events can be controlled using the scrollEventThrottle prop. The event has the shape { nativeEvent: { 
                     contentInset: { bottom, left, right, top }, 
                     contentOffset: { x, y }, 
@@ -119,6 +116,9 @@ export default class IntroScreens extends Component {
                     layoutMeasurement: { height, width }, zoomScale } 
                     }
         All values are numbers. */
+
+    return (
+      <View style={styles.container}>
         <ScrollView
           style={styles.container}
           pagingEnabled
@@ -226,13 +226,13 @@ export default class IntroScreens extends Component {
             <View style={styles.screenHeader}>
               <Animated.Image
                 source={Images.Image1}
-                style={
-                  [{
+                style={[
+                  {
                     width: PixelRatio.getPixelSizeForLayoutSize(75),
                     height: PixelRatio.getPixelSizeForLayoutSize(63)
                   },
-                  screen3Styles.image1]
-                }
+                  screen3Styles.image1
+                ]}
                 resizeMode="contain"
               />
               <Animated.Image
