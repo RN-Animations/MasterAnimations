@@ -21,6 +21,7 @@ import PhotoGrid from "./src/PhotoGrid";
 import ColorPicker from "./src/ColorPicker";
 import FabButtonMenu from "./src/FabButtonMenu";
 import IntroScreens from "./src/IntroScreens";
+import EvolvingButton from "./src/EvolvingButton";
 
 const App = () => {
   return (
@@ -43,7 +44,8 @@ const App = () => {
       // <PhotoGrid/>
       // <ColorPicker/>
       // <FabButtonMenu/>
-      <IntroScreens/>
+      // <IntroScreens/>
+      <EvolvingButton/>
 
   );
 };
