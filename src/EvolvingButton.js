@@ -18,14 +18,17 @@ export default class EvolvingButton extends Component {
     open: false
   };
 
-  toggleTransform = () => {};
+  toggleTransform = () => {
+
+  };
 
   render() {
     const { width } = Dimensions.get("window");
 
     const widthInterpolate = this.state.animation.interpolate({
       inputRange: [0, 0.5],
-      outputRange: [100, width - 40]
+      outputRange: [100, width - 40],
+      extrapolate: "clamp"
     });
 
     const opacityToolbarInterpolate = this.state.animation.interpolate({
@@ -33,10 +36,31 @@ export default class EvolvingButton extends Component {
       outputRange: [0, 1],
       extrapolate: "clamp"
     });
-
     const toolbarStyles = {
       opacity: opacityToolbarInterpolate
     }
+
+    const editotHeightInterpolate = this.state.animation.interpolate({
+      inputRange: [0.7, 1],
+      outputRange: [0, 150],
+      extrapolate: "clamp"
+    });
+    const editorStyles = {
+      opacity: this.state.animation,
+      height: editotHeightInterpolate
+    }
+
+    const opacityButtonInterpolate = this.state.animation.interpolate({
+      inputRange: [0, .5],
+      outputRange: [1, 0],
+      extrapolate: "clamp"
+    });
+    const buttonStyles = {
+      opacity: opacityButtonInterpolate
+    }
+
+   
+
 
     return (
       <View style={styles.container}>
@@ -59,15 +83,15 @@ export default class EvolvingButton extends Component {
               </Animated.View>
             </View>
             {/* This is our "write" button */}
-            <Animated.View style={[StyleSheet.absoluteFill, styles.center]}>
-              <TouchableWithoutFeedback>
+            <Animated.View style={[StyleSheet.absoluteFill, styles.center, buttonStyles]}>
+              <TouchableWithoutFeedback onPress={this.toggleTransform} >
                 <View>
                   <Text style={styles.buttonText}>Write</Text>
                 </View>
               </TouchableWithoutFeedback>
             </Animated.View>
             {/* This Animated.View will slide up and create that stack up motion */}
-            <Animated.View style={[styles.lowerView]}>
+            <Animated.View style={[styles.lowerView, editorStyles]}>
               <TextInput
                 placeholder="Start typing..."
                 multiline
