@@ -23,14 +23,29 @@ export default class EvolvingButton extends Component {
   render() {
     const { width } = Dimensions.get("window");
 
+    const widthInterpolate = this.state.animation.interpolate({
+      inputRange: [0, 0.5],
+      outputRange: [100, width - 40]
+    });
+
+    const opacityToolbarInterpolate = this.state.animation.interpolate({
+      inputRange: [0, 0.5],
+      outputRange: [0, 1],
+      extrapolate: "clamp"
+    });
+
+    const toolbarStyles = {
+      opacity: opacityToolbarInterpolate
+    }
+
     return (
       <View style={styles.container}>
         <KeyboardAvoidingView style={styles.center} behavior="padding">
-          <Animated.View style={[styles.editor, { width: width - 40 }]}>
+          <Animated.View style={[styles.editor, { width: widthInterpolate }]}>
             {/* Wrapping bar */}
             <View style={styles.bar}>
               {/* Use Animated to adjust the opacity */}
-              <Animated.View style={[styles.toolbar]}>
+              <Animated.View style={[styles.toolbar, toolbarStyles]}>
                 <Icon name="format-bold" color="#FFF" size={20} />
                 <Icon name="format-italic" color="#FFF" size={20} />
                 <Icon name="format-underline" color="#FFF" size={20} />
@@ -43,6 +58,14 @@ export default class EvolvingButton extends Component {
                 </View>
               </Animated.View>
             </View>
+            {/* This is our "write" button */}
+            <Animated.View style={[StyleSheet.absoluteFill, styles.center]}>
+              <TouchableWithoutFeedback>
+                <View>
+                  <Text style={styles.buttonText}>Write</Text>
+                </View>
+              </TouchableWithoutFeedback>
+            </Animated.View>
             {/* This Animated.View will slide up and create that stack up motion */}
             <Animated.View style={[styles.lowerView]}>
               <TextInput
