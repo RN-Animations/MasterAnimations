@@ -11,12 +11,61 @@ import {
 } from "react-native";
 
 export default class AnimatedSwipeAway extends Component {
+  //WARNING! To be deprecated in React v17. Use componentDidMount instead.
+  UNSAFE_componentWillMount() {
+    this.animated = new Animated.Value(0);
+    this.animatedMargin = new Animated.Value(0);
+    this.scrollOffset = 0;
+    this.contentHeight = 0;
+    this.scrollViewHeight = 0;
+
+    this.panResponder = PanResponder.create({
+        // onStartShouldSetPanResponder: (evt, gestureState) => true,
+        onMoveShouldSetPanResponder: (evt, gestureState) => {
+            
+        },
+        onPanResponderGrant: (e, gestureState) => {
+
+        },
+        onPanResponderMove: (e, gestureState) => {
+
+        },
+        onPanResponderRelease: (e, gestureState) => {
+
+        },
+    })
+  }
   render() {
+    const spacerStyle = {
+      marginTop: this.animatedMargin
+    };
+
+    const opacityInterpolate = this.animated.interpolate({
+      inputRange: [-400, 0, 400],
+      outputRange: [0, 1, 0]
+    });
+
+    const modalStyle = {
+      transform: [{ translateY: this.animated }],
+      opacity: opacityInterpolate
+    };
+
     return (
       <View style={styles.container}>
-        <Animated.View style={[styles.modal]}>
+        <Animated.View style={spacerStyle} />
+        <Animated.View style={[styles.modal, modalStyle]}>
           <View style={styles.comments}>
-            <ScrollView>
+            <ScrollView
+              scrollEventThrottle={16}
+              onScroll={event => {
+                this.scrollOffset = event.nativeEvent.contentOffset.y;
+                this.scrollViewHeight =
+                  even.nativeEvent.layoutMeasurment.height;
+              }}
+              onContentSizeChange={(contentWidth, contentHeight) => {
+                  this.contentHeight = contentHeight
+              }}
+            >
               <Text style={styles.fakeText}>Top</Text>
               <View style={styles.fakeComments} />
               <Text style={styles.fakeText}>Bottom</Text>
