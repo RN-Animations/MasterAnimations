@@ -35,8 +35,14 @@ export default class AnimatedSwipeAway extends Component {
             return true
         }
       },
-      onPanResponderGrant: (e, gestureState) => {},
-      onPanResponderMove: (e, gestureState) => {},
+      onPanResponderMove: (e, gestureState) => {
+        const { dy } = gestureState;
+        if (dy < 0) {
+            this.animated.setValue(dy)
+        } else if (dy > 0) {
+            this.animatedMargin.setValue(dy)
+        }
+      },
       onPanResponderRelease: (e, gestureState) => {}
     });
   }
@@ -58,14 +64,16 @@ export default class AnimatedSwipeAway extends Component {
     return (
       <View style={styles.container}>
         <Animated.View style={spacerStyle} />
-        <Animated.View style={[styles.modal, modalStyle]}>
+        <Animated.View style={[styles.modal, modalStyle]}
+        {...this.panResponder.panHandlers}
+        >
           <View style={styles.comments}>
             <ScrollView
               scrollEventThrottle={16}
               onScroll={event => {
                 this.scrollOffset = event.nativeEvent.contentOffset.y;
                 this.scrollViewHeight =
-                  even.nativeEvent.layoutMeasurment.height;
+                  event.nativeEvent.layoutMeasurement.height;
               }}
               onContentSizeChange={(contentWidth, contentHeight) => {
                 this.contentHeight = contentHeight;
