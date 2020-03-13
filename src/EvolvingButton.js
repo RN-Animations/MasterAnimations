@@ -26,7 +26,7 @@ export default class EvolvingButton extends Component {
     return (
       <View style={styles.container}>
         <KeyboardAvoidingView style={styles.center} behavior="padding">
-          <Animated.View style={styles.editor}>
+          <Animated.View style={[styles.editor, { width: width - 40 }]}>
             {/* Wrapping bar */}
             <View style={styles.bar}>
               {/* Use Animated to adjust the opacity */}
@@ -35,7 +35,7 @@ export default class EvolvingButton extends Component {
                 <Icon name="format-italic" color="#FFF" size={20} />
                 <Icon name="format-underline" color="#FFF" size={20} />
                 <Icon name="format-list-bulleted" color="#FFF" size={20} />
-                <Icon name="format-list-numbers" color="#FFF" size={20} />
+                <Icon name="format-list-numbered" color="#FFF" size={20} />
                 <View style={styles.rightInnerBar}>
                   <Icon name="link" color="#FFF" size={20} />
                   <Icon name="image" color="#FFF" size={20} />
@@ -43,6 +43,15 @@ export default class EvolvingButton extends Component {
                 </View>
               </Animated.View>
             </View>
+            {/* This Animated.View will slide up and create that stack up motion */}
+            <Animated.View style={[styles.lowerView]}>
+              <TextInput
+                placeholder="Start typing..."
+                multiline
+                ref={input => (this._input = input)}
+                style={[StyleSheet.absoluteFill, styles.input]} // so it will take the height of the parent
+              />
+            </Animated.View>
           </Animated.View>
         </KeyboardAvoidingView>
       </View>
