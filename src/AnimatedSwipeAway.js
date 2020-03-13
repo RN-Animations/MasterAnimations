@@ -20,20 +20,25 @@ export default class AnimatedSwipeAway extends Component {
     this.scrollViewHeight = 0;
 
     this.panResponder = PanResponder.create({
-        // onStartShouldSetPanResponder: (evt, gestureState) => true,
-        onMoveShouldSetPanResponder: (evt, gestureState) => {
-            
-        },
-        onPanResponderGrant: (e, gestureState) => {
-
-        },
-        onPanResponderMove: (e, gestureState) => {
-
-        },
-        onPanResponderRelease: (e, gestureState) => {
-
-        },
-    })
+      // onStartShouldSetPanResponder: (evt, gestureState) => true,
+      onMoveShouldSetPanResponder: (evt, gestureState) => {
+        const { dy } = gestureState;
+        const totalScrollHeight = this.scrollOffset + this.scrollViewHeight;
+        // when should this panResponter respont
+        // 1st. For when we are at the tops and we're dragging downwards
+        // and we want to pass our thresshold.
+        // 2nd. opposite
+        if (
+          (this.scrollOffset <= 0 && dy > 0) ||
+          (totalScrollHeight >= this.contentHeight && dy < 0)
+        ) {
+            return true
+        }
+      },
+      onPanResponderGrant: (e, gestureState) => {},
+      onPanResponderMove: (e, gestureState) => {},
+      onPanResponderRelease: (e, gestureState) => {}
+    });
   }
   render() {
     const spacerStyle = {
@@ -63,7 +68,7 @@ export default class AnimatedSwipeAway extends Component {
                   even.nativeEvent.layoutMeasurment.height;
               }}
               onContentSizeChange={(contentWidth, contentHeight) => {
-                  this.contentHeight = contentHeight
+                this.contentHeight = contentHeight;
               }}
             >
               <Text style={styles.fakeText}>Top</Text>
