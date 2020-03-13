@@ -22,6 +22,7 @@ import ColorPicker from "./src/ColorPicker";
 import FabButtonMenu from "./src/FabButtonMenu";
 import IntroScreens from "./src/IntroScreens";
 import EvolvingButton from "./src/EvolvingButton";
+import AnimatedSwipeAway from "./src/AnimatedSwipeAway";
 
 const App = () => {
   return (
@@ -45,7 +46,8 @@ const App = () => {
       // <ColorPicker/>
       // <FabButtonMenu/>
       // <IntroScreens/>
-      <EvolvingButton/>
+      // <EvolvingButton/>
+      <AnimatedSwipeAway/>
 
   );
 };
