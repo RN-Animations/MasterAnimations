@@ -19,7 +19,17 @@ export default class EvolvingButton extends Component {
   };
 
   toggleTransform = () => {
+    // Handle pointer events in the covering View
+    const toValue = this._open ? 0 : 1;
 
+    Animated.timing(this.state.animation, {
+      toValue,
+      duration: 550
+    }).start(() => {
+      this._open ? this._input.blur() : this._input.focus()
+      this._open = !this._open
+      this.setState({open: this._open})
+    })
   };
 
   render() {
@@ -38,7 +48,7 @@ export default class EvolvingButton extends Component {
     });
     const toolbarStyles = {
       opacity: opacityToolbarInterpolate
-    }
+    };
 
     const editotHeightInterpolate = this.state.animation.interpolate({
       inputRange: [0.7, 1],
@@ -48,19 +58,16 @@ export default class EvolvingButton extends Component {
     const editorStyles = {
       opacity: this.state.animation,
       height: editotHeightInterpolate
-    }
+    };
 
     const opacityButtonInterpolate = this.state.animation.interpolate({
-      inputRange: [0, .5],
+      inputRange: [0, 0.5],
       outputRange: [1, 0],
       extrapolate: "clamp"
     });
     const buttonStyles = {
       opacity: opacityButtonInterpolate
-    }
-
-   
-
+    };
 
     return (
       <View style={styles.container}>
@@ -83,8 +90,11 @@ export default class EvolvingButton extends Component {
               </Animated.View>
             </View>
             {/* This is our "write" button */}
-            <Animated.View style={[StyleSheet.absoluteFill, styles.center, buttonStyles]}>
-              <TouchableWithoutFeedback onPress={this.toggleTransform} >
+            <Animated.View
+              style={[StyleSheet.absoluteFill, styles.center, buttonStyles]}
+              pointerEvents={this.state.open ? 'none' : 'auto'}
+            >
+              <TouchableWithoutFeedback onPress={this.toggleTransform}>
                 <View>
                   <Text style={styles.buttonText}>Write</Text>
                 </View>
@@ -100,6 +110,11 @@ export default class EvolvingButton extends Component {
               />
             </Animated.View>
           </Animated.View>
+          <TouchableWithoutFeedback onPress={this.toggleTransform}>
+                <Animated.View style={styles.toolbarStyles}>
+                  <Text style={styles.close}>Close</Text>
+                </Animated.View>
+              </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
       </View>
     );
@@ -156,6 +171,7 @@ const styles = StyleSheet.create({
   },
   close: {
     color: "#2979FF",
-    marginTop: 10
+    marginTop: 10,
+    marginBottom: 50
   }
 });
