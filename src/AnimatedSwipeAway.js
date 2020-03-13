@@ -32,18 +32,49 @@ export default class AnimatedSwipeAway extends Component {
           (this.scrollOffset <= 0 && dy > 0) ||
           (totalScrollHeight >= this.contentHeight && dy < 0)
         ) {
-            return true
+          return true;
         }
       },
       onPanResponderMove: (e, gestureState) => {
         const { dy } = gestureState;
         if (dy < 0) {
-            this.animated.setValue(dy)
+          this.animated.setValue(dy);
         } else if (dy > 0) {
-            this.animatedMargin.setValue(dy)
+          this.animatedMargin.setValue(dy);
         }
       },
-      onPanResponderRelease: (e, gestureState) => {}
+      onPanResponderRelease: (e, gestureState) => {
+        const { dy } = gestureState;
+
+        if (dy < -150) {
+          Animated.parallel([
+            Animated.timing(this.animated, {
+              toValue: -400,
+              duration: 150
+            }),
+            Animated.timing(this.animatedMargin, {
+              toValue: 0,
+              duration: 150
+            })
+          ]).start();
+        } else if (dy > -150 && dy < 150) {
+          Animated.parallel([
+            Animated.spring(this.animated, {
+              toValue: 0,
+              duration: 150
+            }),
+            Animated.spring(this.animatedMargin, {
+              toValue: 0,
+              duration: 150
+            })
+          ]).start();
+        } else if (dy > 150) {
+          Animated.timing(this.animated, {
+            toValue: 400,
+            duration: 300
+          }).start();
+        }
+      }
     });
   }
   render() {
@@ -64,8 +95,9 @@ export default class AnimatedSwipeAway extends Component {
     return (
       <View style={styles.container}>
         <Animated.View style={spacerStyle} />
-        <Animated.View style={[styles.modal, modalStyle]}
-        {...this.panResponder.panHandlers}
+        <Animated.View
+          style={[styles.modal, modalStyle]}
+          {...this.panResponder.panHandlers}
         >
           <View style={styles.comments}>
             <ScrollView
