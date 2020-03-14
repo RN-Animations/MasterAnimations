@@ -19,3 +19,5 @@ Handler function is passed the content width and content height as parameters:
 
 It's implemented using `onLayout` handler attached to the content container which this ScrollView renders.
 
+Check questions at Udemy
+[How does the if statement work in onMoveShouldSetPanResponder?](https://www.udemy.com/course/master-react-native-animations/learn/lecture/8648332#questions/9639898)

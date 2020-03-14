@@ -20,16 +20,16 @@ export default class AnimatedSwipeAway extends Component {
     this.scrollViewHeight = 0;
 
     this.panResponder = PanResponder.create({
-      // onStartShouldSetPanResponder: (evt, gestureState) => true,
-      onMoveShouldSetPanResponder: (evt, gestureState) => {
+       onMoveShouldSetPanResponder: (evt, gestureState) => {
         const { dy } = gestureState;
         const totalScrollHeight = this.scrollOffset + this.scrollViewHeight;
         // when should this panResponter respont
-        // 1st. For when we are at the tops and we're dragging downwards
+        // 1st. For when we are at the top and we're dragging downwards
         // and we want to pass our thresshold.
         // 2nd. opposite
         if (
           (this.scrollOffset <= 0 && dy > 0) ||
+        //   (this.scrollOffset >= 0 && dy < 0)
           (totalScrollHeight >= this.contentHeight && dy < 0)
         ) {
           return true;
@@ -46,6 +46,7 @@ export default class AnimatedSwipeAway extends Component {
       onPanResponderRelease: (e, gestureState) => {
         const { dy } = gestureState;
 
+        // swiping up
         if (dy < -150) {
           Animated.parallel([
             Animated.timing(this.animated, {
@@ -57,6 +58,7 @@ export default class AnimatedSwipeAway extends Component {
               duration: 150
             })
           ]).start();
+          // haven't gone anywhere
         } else if (dy > -150 && dy < 150) {
           Animated.parallel([
             Animated.spring(this.animated, {
@@ -68,6 +70,7 @@ export default class AnimatedSwipeAway extends Component {
               duration: 150
             })
           ]).start();
+          // swiping down
         } else if (dy > 150) {
           Animated.timing(this.animated, {
             toValue: 400,
@@ -83,11 +86,15 @@ export default class AnimatedSwipeAway extends Component {
     };
 
     const opacityInterpolate = this.animated.interpolate({
+        /* Because we can fade both going up and down,
+        we use 400 ect so we can use the same opacity interpolate
+        for both interactions */
       inputRange: [-400, 0, 400],
       outputRange: [0, 1, 0]
     });
 
     const modalStyle = {
+        // control the swiping up and down
       transform: [{ translateY: this.animated }],
       opacity: opacityInterpolate
     };
@@ -101,6 +108,7 @@ export default class AnimatedSwipeAway extends Component {
         >
           <View style={styles.comments}>
             <ScrollView
+            // notify every 16'' that a scroll happent
               scrollEventThrottle={16}
               onScroll={event => {
                 this.scrollOffset = event.nativeEvent.contentOffset.y;
