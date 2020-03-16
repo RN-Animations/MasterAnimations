@@ -41,13 +41,13 @@ const App = () => {
       // <ButtonWithProgress/>
       // <AnimatedQuestionnaire/>
       // <$2nd_AnimatedQuestionnaire/>
-      // <AnimatedNotification/>
+      <AnimatedNotification/>
       // <PhotoGrid/>
       // <ColorPicker/>
       // <FabButtonMenu/>
       // <IntroScreens/>
       // <EvolvingButton/>
-      <AnimatedSwipeAway/>
+      // <AnimatedSwipeAway/>
 
   );
 };

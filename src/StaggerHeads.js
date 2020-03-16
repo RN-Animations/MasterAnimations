@@ -44,11 +44,16 @@ export default class StaggerHeads extends Component {
           // and moves them in the `offset`,
           // before they override the animated values.
           // So we save the position that the animation is currently at.
+          /* From the docs: 
+          Sets the offset value to the base value, 
+          and resets the base value to zero. 
+          The final output of the value is unchanged. */
           animation.extractOffset();
           // setValue Animated bug fix
           /* When we call `extractOffset` the value is extracted synchronously.
           It's not going through `setValue`, that would stop every other animation,
-          So if the `animation.Spring` doesn't come to a rest and then you start another,
+          So if the `animation.Spring` doesn't come to a rest 
+          and then you start another,
           the heads will jump around. That is why we use setValue.
            */
           animation.setValue({ x: 0, y: 0 });

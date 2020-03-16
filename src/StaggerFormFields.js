@@ -37,7 +37,7 @@ export default class StaggerFormFields extends Component {
   state = {
     // Because they are the same, we'll make a function
     // that takes an animated value and returns styling.
-    // So are render method stays clean.
+    // So the render method stays clean.
     email: new Animated.Value(0),
     password: new Animated.Value(0),
     button: new Animated.Value(0)
