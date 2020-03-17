@@ -20,16 +20,21 @@ export default class AnimatedSwipeAway extends Component {
     this.scrollViewHeight = 0;
 
     this.panResponder = PanResponder.create({
-       onMoveShouldSetPanResponder: (evt, gestureState) => {
+      onMoveShouldSetPanResponder: (evt, gestureState) => {
         const { dy } = gestureState;
         const totalScrollHeight = this.scrollOffset + this.scrollViewHeight;
         // when should this panResponter respont
         // 1st. For when we are at the top and we're dragging downwards
         // and we want to pass our thresshold.
         // 2nd. opposite
+        // this.animated.addListener(({ value }) =>
+        //           console.log('value', value)
+        //         );
+                // console.log('gestureState', gestureState);
+                
         if (
           (this.scrollOffset <= 0 && dy > 0) ||
-        //   (this.scrollOffset >= 0 && dy < 0)
+          //   (this.scrollOffset >= 0 && dy < 0)
           (totalScrollHeight >= this.contentHeight && dy < 0)
         ) {
           return true;
@@ -86,7 +91,7 @@ export default class AnimatedSwipeAway extends Component {
     };
 
     const opacityInterpolate = this.animated.interpolate({
-        /* Because we can fade both going up and down,
+      /* Because we can fade both going up and down,
         we use 400 ect so we can use the same opacity interpolate
         for both interactions */
       inputRange: [-400, 0, 400],
@@ -94,7 +99,7 @@ export default class AnimatedSwipeAway extends Component {
     });
 
     const modalStyle = {
-        // control the swiping up and down
+      // control the swiping up and down
       transform: [{ translateY: this.animated }],
       opacity: opacityInterpolate
     };
@@ -108,9 +113,14 @@ export default class AnimatedSwipeAway extends Component {
         >
           <View style={styles.comments}>
             <ScrollView
-            // notify every 16'' that a scroll happent
+              // notify every 16'' that a scroll happent
               scrollEventThrottle={16}
               onScroll={event => {
+                // console.log('event', event);
+                
+                // this.animated.addListener(({ value }) =>
+                //   console.log('value', value)
+                // );
                 this.scrollOffset = event.nativeEvent.contentOffset.y;
                 this.scrollViewHeight =
                   event.nativeEvent.layoutMeasurement.height;
