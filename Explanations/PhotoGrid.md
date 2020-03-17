@@ -423,3 +423,22 @@ This works well for images, however there are cases where you want to do text, e
 
 [pointerEvents](https://reactnative.dev/docs/view#pointerevents)
 
+[absoluteFill](https://reactnative.dev/docs/stylesheet#absolutefill)
+A very common pattern is to create overlays with position absolute and zero positioning (position: 'absolute', left: 0, right: 0, top: 0, bottom: 0), so absoluteFill can be used for convenience and to reduce duplication of these repeated styles. If you want, absoluteFill can be used to create a customized entry in a StyleSheet, e.g.:
+
+const styles = StyleSheet.create({
+  wrapper: {
+    ...StyleSheet.absoluteFill,
+  },
+});
+absoluteFillObject
+Sometimes you may want absoluteFill but with a couple tweaks - absoluteFillObject can be used to create a customized entry in a StyleSheet, e.g.:
+
+const styles = StyleSheet.create({
+  wrapper: {
+    ...StyleSheet.absoluteFillObject,
+    top: 10,
+    backgroundColor: 'transparent',
+  },
+});
+

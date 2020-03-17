@@ -41,8 +41,8 @@ const App = () => {
       // <ButtonWithProgress/>
       // <AnimatedQuestionnaire/>
       // <$2nd_AnimatedQuestionnaire/>
-      <AnimatedNotification/>
-      // <PhotoGrid/>
+      // <AnimatedNotification/>
+      <PhotoGrid/>
       // <ColorPicker/>
       // <FabButtonMenu/>
       // <IntroScreens/>

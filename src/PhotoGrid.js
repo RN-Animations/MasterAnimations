@@ -61,8 +61,8 @@ export default class PhotoGrid extends Component {
         y: height
       });
 
-      // why we call setState in the measure func?
-      // ready to animate
+      // Why we call setState in the measure func?
+      // Ready to animate
       this.setState(
         {
           activeImage: images[index],
@@ -161,6 +161,7 @@ export default class PhotoGrid extends Component {
             {/* If we would add images dynamically, then they should be on state. */}
             {images.map((src, index) => {
               const style =
+              // Maybe activeIndex should be activeImage!
                 index === this.state.activeIndex ? activeIndexStyle : undefined;
               return (
                 <TouchableWithoutFeedback
