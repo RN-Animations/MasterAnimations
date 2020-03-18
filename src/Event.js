@@ -15,7 +15,13 @@ const Event = () => {
   return (
     <View style={styles.container}>
       <ScrollView
+      /*  scrollEventThrottle={16} = We want the onScroll to run every 16''.
+      With that we achive 60 fps */
         scrollEventThrottle={16}
+        // The 2 onScrolls are equivalent.
+        // onScroll={e => {
+        //   animation.setValue(e.nativeEvent.contentOffset.y)
+        // }}
         onScroll={Animated.event([
           {
             nativeEvent: {

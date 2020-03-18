@@ -4,6 +4,7 @@ Udemy course:
 
 ### Check out:
 - Dynamic `inputRange` values @AnimatedQuestionnaire.
+- Is there a way to do the animation in Event.js but in place of an Animated.event use a PanResponder?
 
 ### Intro
  - Why You Should Animate

@@ -11,7 +11,7 @@ This is a combination of 2 Animated.Values, an x and a y. The only difference is
 getTranslateTransform will return an array that can be passed directly to a transform. However if you are using other transforms you'll need to combine the arrays.
 
 These 2 are equivalent
-```
+```js
 <code>
 const animatedStyle = {
   transform: this._animation.getTranslateTransform()
@@ -29,7 +29,7 @@ The same goes for getLayout. This will return a top and left object.
 
 These 2 are also equivalent
 
-````
+```js
 <code>
 const animatedStyle = this._animation.getLayout()
  
@@ -55,7 +55,7 @@ Neither method is wrong, it all depends on personal preference, your needs, and 
 Sometimes you may need raw access to an animated value. Due to the nature of Animated being async you must supply a listener. You define this with `addListener` and provide a callback. It is necessary that this is async because if the animation is being driven/calculated by the native world the exactly value will not be synchronously available.
 
 The syntax looks like this.
-```
+```js
 <code class="js language-js">
 this._animation.addListener(({ value }) => {
   // Do something here
@@ -81,7 +81,7 @@ Additionally there are `flattenOffset` and `extractOffset`. These operate in a r
 `flattenOffset` will take the offset and merge into the value of the `Animated.Value` and set the offset to 0.
 
 Example:
-```
+```js
 <code class="js language-js">
 this._animation = Animated.Value(15);
 this._animation.setOffset(5);
@@ -96,7 +96,7 @@ this._animation.flattenOffset();
 ```
 `extractOffset` will take the value of the `Animated.Value` merge it into the `offset`, and set the value to 0.
 
-```
+```js
 <code class="js language-js">
 this._animation = Animated.Value(15);
 this._animation.setOffset(5);
@@ -116,4 +116,4 @@ extractOffset will be heavily used for dragging operations.
 
 If you attach a listener it is **absolutely crucial** that you call `removeAllListeners` or `removeListener` in `componentWillUnmount` otherwise memory leaks will happen. This will cause your application to eat up more memory, and keep instances around that aren't necessary.
 
-* `Delta` is simply the difference, or change, in a certain quantity
+* `Delta` is simply the difference, or change, in a certain quantity.
