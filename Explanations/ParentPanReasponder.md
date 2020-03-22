@@ -70,7 +70,7 @@ Still not clear? Lets do some code. This will just show you how to make internal
 Create a PanResponder
 
 First we need to create a PanResponder. If you look at the documentation you'll notice many of the functions are not necessary, and or default to returning true. So we'll
-``
+```js
 <code>
 componentWillMount() {
     this._panResponder = PanResponder.create({
@@ -89,7 +89,7 @@ I won't type it all out. It's all in the documentation https://facebook.github.i
 Create a simple view
 
 We start by creating a View with some styles and setup some state for the button.
-```
+```js
 <code>
 class PanResponderTest extends Component {
   constructor(props) {
@@ -125,7 +125,7 @@ class PanResponderTest extends Component {
 </code>
 ```
 We create a top level container (which will receive the PanResponder). 2 zones, one red, and one blue. These will be special zones for touch registering. Then finally a TouchableOpacity button. This will simulate some internal item you want pressed while having an external PanResponder.
-```
+```js
 <code>
 const styles = StyleSheet.create({
   container: {
@@ -166,7 +166,7 @@ This line `onMoveShouldSetPanResponder:(evt, gestureState) => true` always retur
 - Limit it to distance moved
 
 `moveX` and `moveY` are the current coordinate positions of the gestureState. `dx` and `dy` are the distance change from where the initial finger was put down (delta X and delta Y).
-```
+```js
 <code>
 const getDirectionAndColor = ({ moveX, moveY, dx, dy}) => {
   const draggedDown = dy > 30;
@@ -201,7 +201,7 @@ This function will return nothing if we haven't dragged a finger greater than 30
 - Where does this function go?
 
 Since our `getDirectionAndColor` function will return either truthy or falsy values we can pass that right into our `onMoveShouldSetPanResponder`. This means when it returns truthy our `onPanResponderMove`. We then recall the function and then call setState to update the button text.
-```
+```js
 <code>  
 componentWillMount() {
     this._panResponder = PanResponder.create({
@@ -218,7 +218,7 @@ componentWillMount() {
 ```
 
 Finally we need to add our PanResponder to the parent View like so
-```
+```js
 <code>  
 render() {
     return (

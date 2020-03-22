@@ -40,7 +40,7 @@ export default class ParentPanReasponder extends Component {
   state = {
     zone: "Still Touchable",
   };
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._panResponder = PanResponder.create({
       onMoveShouldSetPanResponder: (evt, gestureState) => !!getDirectionAndColor(gestureState),
       onPanResponderMove: (evt, gestureState) => {
