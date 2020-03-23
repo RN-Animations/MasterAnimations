@@ -46,7 +46,16 @@ export default class PG_Scale extends Component {
       <View style={styles.container}>
         <TouchableWithoutFeedback onPress={this.startAnimation}>
           <Animated.View style={[styles.box, animatedStyles]}>
-            <Text>This side forward</Text>
+            <Text>
+              This side forward
+            </Text>
+            {/* If you put a lot of text it will not adjust it self
+            because scale does not effect layout. But if you would use widht and height
+            it would effect it. Check th PB_WidhtAndHeight*/}
+            {/* <Text>
+              This side forward, This side forward, This side forward, This side
+              forward, This side forward, This side forward
+            </Text> */}
           </Animated.View>
         </TouchableWithoutFeedback>
       </View>

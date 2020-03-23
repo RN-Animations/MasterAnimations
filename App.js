@@ -33,6 +33,9 @@ import TranslatePosition from "./src/TranslatePosition";
 import PG_TranslatePosition from "./src/PG_TranslatePosition";
 import Scale from "./src/Scale";
 import PG_Scale from "./src/PG_Scale";
+import WidthAndHeight from "./src/WidthAndHeight";
+import AbsolutePosition from "./src/AbsolutePosition";
+import PG_AbsolutePosition from "./src/PG_AbsolutePosition";
 
 const App = () => {
   return (
@@ -41,7 +44,10 @@ const App = () => {
     // <TranslatePosition />
     // <PG_TranslatePosition />
     // <Scale />
-    <PG_Scale />
+    // <PG_Scale />
+    // <WidthAndHeight />
+    // <AbsolutePosition />
+    <PG_AbsolutePosition />
     // <Event />
     // <PG_Event />
     // <Decay />
