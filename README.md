@@ -38,6 +38,12 @@ Lectures - modules:
 
 - Opacity
 - Translate Position
+- Scale
+- Width/Height Values
+- Absolute Position
+- Interpolation
+- Color/Background Color
+- Rotation
 
 
 Extra info

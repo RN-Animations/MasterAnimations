@@ -36,6 +36,10 @@ import PG_Scale from "./src/PG_Scale";
 import WidthAndHeight from "./src/WidthAndHeight";
 import AbsolutePosition from "./src/AbsolutePosition";
 import PG_AbsolutePosition from "./src/PG_AbsolutePosition";
+import ColorBackground from "./src/ColorBackground";
+import PG_ColorBackground from "./src/PG_ColorBackground";
+import Rotation from "./src/Rotation";
+import PG_Rotation from "./src/PG_Rotation";
 
 const App = () => {
   return (
@@ -47,7 +51,11 @@ const App = () => {
     // <PG_Scale />
     // <WidthAndHeight />
     // <AbsolutePosition />
-    <PG_AbsolutePosition />
+    // <PG_AbsolutePosition />
+    // <ColorBackground />
+    // <PG_ColorBackground />
+    // <Rotation />
+    <PG_Rotation />
     // <Event />
     // <PG_Event />
     // <Decay />
