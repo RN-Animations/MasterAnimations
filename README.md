@@ -31,3 +31,23 @@ Also here are some resources to get some inspiration for animations. Don't forge
 [UIMovement](https://uimovement.com/)
 
 [Codrops](https://tympanus.net/codrops/)
+
+
+
+Lectures - modules:
+
+- Opacity
+- Translate Position
+
+
+Extra info
+
+- [Animated.event](https://animationbook.codedaily.io/animated-event/)
+- [interpolation](https://facebook.github.io/react-native/docs/animations#interpolation)
+- [scrollEventThrottle](https://reactnative.dev/docs/scrollview#scrolleventthrottle)
+- [How does Animated.Event work in React Native?](https://stackoverflow.com/questions/43510145/how-does-animated-event-work-in-react-native)
+- [PanResponder](https://facebook.github.io/react-native/docs/panresponder)
+- [getLayout](https://animationbook.codedaily.io/get-layout/)
+- `getLayout` is a method of [AnimatedValueXY](https://facebook.github.io/react-native/docs/animatedvaluexy#getlayout)
+- [Tracking gestures](https://facebook.github.io/react-native/docs/animations#tracking-gestures)
+- [A gestureState object has the following](https://facebook.github.io/react-native/docs/panresponder#__docusaurus)

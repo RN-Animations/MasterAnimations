@@ -21,7 +21,7 @@ import Cat4 from "../assets/cat4.jpeg";
 const SWIPE_THRESHOLD = 120;
 const { height } = Dimensions.get("window");
 
-export default class KittenCards extends Component {
+export default class PG_KittenCards extends Component {
   state = {
     items: [
       {
@@ -146,6 +146,20 @@ export default class KittenCards extends Component {
       extrapolate: "clamp" // no more rotation than 30deg
     });
 
+    const cardScale = animation.x.interpolate({
+      inputRange: [-200, 0, 200],
+      outputRange: [0.1, 1, 0.1],
+      extrapolate: "clamp" // no more rotation than 30deg
+    });
+    const cardTranslateY = animation.x.interpolate({
+      inputRange: [-200, 0, 200],
+      outputRange: [20, 0, -10],
+    });
+    const cardTranslateX = animation.x.interpolate({
+      inputRange: [-200, 0, 200],
+      outputRange: [20, 0, -20],
+    });
+
     const opacity = animation.x.interpolate({
       inputRange: [-200, 0, 200],
       outputRange: [0.5, 1, 0.5],
@@ -181,7 +195,7 @@ export default class KittenCards extends Component {
     };
 
     const animatedCardStyles = {
-      transform: [{ rotate }, ...this.state.animation.getTranslateTransform()],
+      transform: [{ rotate }, { scale: cardScale }, {translateY: cardTranslateY}, {translateX: cardTranslateX}],
       opacity
     };
 
@@ -292,7 +306,7 @@ const styles = StyleSheet.create({
 
   card: {
     width: 300,
-    height: 500,
+    height: 300,
     position: "absolute",
     borderRadius: 3,
     shadowColor: "#000",

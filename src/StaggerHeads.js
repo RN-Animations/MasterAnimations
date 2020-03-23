@@ -50,7 +50,7 @@ export default class StaggerHeads extends Component {
           The final output of the value is unchanged. */
           animation.extractOffset();
           // setValue Animated bug fix
-          /* When we call `extractOffset` the value is extracted synchronously.
+          /* When we call `extractOffset` the value is manipulated synchronously.
           It's not going through `setValue`, that would stop every other animation,
           So if the `animation.Spring` doesn't come to a rest 
           and then you start another,
@@ -69,6 +69,7 @@ export default class StaggerHeads extends Component {
         });
 
         // make the other heads follow
+        // create an array of spring animations to stagger.
         const animations = this.state.heads
           .slice(1)
           .map(({ animation }, index) => {

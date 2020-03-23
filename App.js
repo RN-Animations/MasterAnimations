@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 
-import  Event  from "./src/Event";
+import Event from "./src/Event";
+import PG_Event from "./src/PG_Event";
+
 import Decay from "./src/Decay";
 import CreateAnimatedComp from "./src/CreateAnimatedComp";
 import ParentPanReasponder from "./src/ParentPanResponder";
@@ -23,32 +25,48 @@ import FabButtonMenu from "./src/FabButtonMenu";
 import IntroScreens from "./src/IntroScreens";
 import EvolvingButton from "./src/EvolvingButton";
 import AnimatedSwipeAway from "./src/AnimatedSwipeAway";
+import PG_Decay from "./src/PG_Decay";
+import PG_KittenCards from "./src/PG_KittenCards";
+import Opacity from "./src/Opacity";
+import PG_Opacity from "./src/PG_Opacity";
+import TranslatePosition from "./src/TranslatePosition";
+import PG_TranslatePosition from "./src/PG_TranslatePosition";
+import Scale from "./src/Scale";
+import PG_Scale from "./src/PG_Scale";
 
 const App = () => {
   return (
-      // <Event />
-      // <Decay />
-      // <ParentPanReasponder/>
-      // <CreateAnimatedComp/>
-      // <CustomCreateAnimatedComp/>
-      // <SetNativeProps/>
-      // <Hidden/>
-      // <PointerEvents/>
-      // <$4Corners/>
-      // <StaggerHeads/>
-      // <KittenCards/>
-      // <StaggerFormFields/>
-      // <ButtonWithProgress/>
-      // <AnimatedQuestionnaire/>
-      // <$2nd_AnimatedQuestionnaire/>
-      // <AnimatedNotification/>
-      <PhotoGrid/>
-      // <ColorPicker/>
-      // <FabButtonMenu/>
-      // <IntroScreens/>
-      // <EvolvingButton/>
-      // <AnimatedSwipeAway/>
-
+    // <Opacity />
+    // <PG_Opacity />
+    // <TranslatePosition />
+    // <PG_TranslatePosition />
+    // <Scale />
+    <PG_Scale />
+    // <Event />
+    // <PG_Event />
+    // <Decay />
+    // <PG_Decay />
+    // <ParentPanReasponder/>
+    // <CreateAnimatedComp/>
+    // <CustomCreateAnimatedComp/>
+    // <SetNativeProps/>
+    // <Hidden/>
+    // <PointerEvents/>
+    // <$4Corners/>
+    // <StaggerHeads/>
+    // <KittenCards/>
+    // <PG_KittenCards/>
+    // <StaggerFormFields/>
+    // <ButtonWithProgress/>
+    // <AnimatedQuestionnaire/>
+    // <$2nd_AnimatedQuestionnaire/>
+    // <AnimatedNotification/>
+    // <PhotoGrid/>
+    // <ColorPicker/>
+    // <FabButtonMenu/>
+    // <IntroScreens/>
+    // <EvolvingButton/>
+    // <AnimatedSwipeAway/>
   );
 };
 

@@ -40,15 +40,29 @@ export default class $4Corners extends Component {
 
   render() {
     const animatedStyles = {
-        // getTranslateTransform: Converts {x, y} into a useable translation transform
-        transform: this.state.animation.getTranslateTransform() 
+      /* 
+      getTranslateTransform
+      This is a helper that just saves you some code. 
+      The equivalence of what it generates 
+      is something like so:
+      this._animatedValue = new Animated.ValueXY();
+      transform: [
+          {
+              translateX: this._animatedValue.x
+          },
+          {
+              translateY: this._animatedValue.y
+          }
+      ]
+     */
+      transform: this.state.animation.getTranslateTransform()
     };
     return (
       <View style={styles.container}>
         {/* TouchableWithoutFeedback does a clone of the View below,
          so it propagates the onLayout down to the View. 
          onLayout
-            Invoked on mount and layout changes with:
+            Invoked on `mount` and `layout` changes with:
             {nativeEvent: { layout: {x, y, width, height}}}
             This event is fired immediately once the layout has been calculated, 
             but the new layout may not yet be reflected on the screen 

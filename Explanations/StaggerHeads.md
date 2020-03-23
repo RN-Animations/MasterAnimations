@@ -6,8 +6,9 @@ Facebook introduced a feature of messenger where heads sit on your screen and ar
 - Setup
 
 We'll setup a basic center container view, and setup our heads on our state. Each head will have it's own `Animated.ValueXY` as they will each have their own position even though they'll follow the leader and end up at the same spot.
-```
-<code class="js language-js">import React, { Component } from "react";
+```js
+<code class="js language-js">
+import React, { Component } from "react";
 import {
   AppRegistry,
   StyleSheet,
@@ -71,8 +72,9 @@ We `slice(0)` to clone our array since reverse will mutate, then we call `revers
 
 We apply our style, and then additionally use the `getTranslateTransform` helper to build out our transform for us.
 
-```
-<code class="js language-js">render() {
+```js
+<code class="js language-js">
+render() {
     return (
       <View style={styles.container}>
         {this.state.heads.slice(0).reverse().map((item, index, items) => {
@@ -98,8 +100,9 @@ We apply our style, and then additionally use the `getTranslateTransform` helper
 ```
 
 Our style for each head is just declaring that it's positioned absolutely, and defining a width, height and border radius to round it.
-```
-<code class="js language-js">head: {
+```js
+<code class="js language-js">
+head: {
     width: 80,
     height: 80,
     borderRadius: 40,
@@ -118,7 +121,7 @@ You can also see in our `onPanResponderGrant` we will call `extractOffset` to mo
 When an animation is happening the `Animated.Value` is tagged with the animation that is currently taking place. If a new animation tries to take over it will first stop the previous animation.
 
 However `extractOffset` presently mutates the underlying `value` and `offset` without calling stop on the previous running animation. This was causing issues when you didn't let the heads complete their spring before tapping or dragging again.
-```
+```js
 <code class="js language-js">componentWillMount() {
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
@@ -143,7 +146,7 @@ However `extractOffset` presently mutates the underlying `value` and `offset` wi
 
 There are a few methods we could use here and one of them isn't `stagger`. If we were to use `stagger` any time a new animation started (which occurs every drag) then the other head animations will stop. This is because of how the Animated library works.
 
-The `onPanResponderMove` gets called one every drag, with the stagger the animations to the new position will be delayed by the amount we stagger. If there was another drag that happened the `Animated.stagger` would get triggered again. This would stop all animations previously even though they may not have executed yet. That means all the other heads would just sit there and do nothing.
+The `onPanResponderMove` gets called on every drag, and the stagger of the animations to the new position will be delayed by the amount we stagger. If there was another drag that happened the `Animated.stagger` would get triggered again. This would stop all animations previously even though they may not have executed yet. That means all the other heads would just sit there and do nothing.
 
 So we essentially need to replicate stagger but on at an individual head level.
 
@@ -154,8 +157,9 @@ We'll use a slightly different technique because we have access to the actual va
 We'll use slice(1) to skip the first head which is our drag head, and then use `Animate.sequence` to execute 2 animations one after the other. We'll use delay with the index multiplied by how many milliseconds between each head. In our case each head will be staggered by 10 milliseconds.
 
 Each head will be in it's own sequence so we won't run into the same issue with the stagger where setting the new value on the first head would cause the rest to stop.
-```
-<code class="js language-js">onPanResponderMove: (e, { dx, dy }) => {
+```js
+<code class="js language-js">
+onPanResponderMove: (e, { dx, dy }) => {
   this.state.heads[0].animation.setValue({
     x: dx,
     y: dy,
