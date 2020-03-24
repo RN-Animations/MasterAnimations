@@ -40,6 +40,10 @@ import ColorBackground from "./src/ColorBackground";
 import PG_ColorBackground from "./src/PG_ColorBackground";
 import Rotation from "./src/Rotation";
 import PG_Rotation from "./src/PG_Rotation";
+import WidhtHeigthPercentage from "./src/WidthHeightPercentage";
+import EasingFunc from "./src/Easing";
+import Spring from "./src/Spring";
+import PG_Spring from "./src/PG_Spring";
 
 const App = () => {
   return (
@@ -55,7 +59,11 @@ const App = () => {
     // <ColorBackground />
     // <PG_ColorBackground />
     // <Rotation />
-    <PG_Rotation />
+    // <PG_Rotation />
+    // <WidhtHeigthPercentage />
+    // <EasingFunc />
+    // <Spring />
+    <PG_Spring />
     // <Event />
     // <PG_Event />
     // <Decay />

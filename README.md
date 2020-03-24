@@ -43,7 +43,12 @@ Lectures - modules:
 - Absolute Position
 - Interpolation
 - Color/Background Color
-- Rotation
+- Rotation, 
+- Width/Height Percentage
+- WidhtHeigthPercentage
+- Animated.Value Functions
+- Easing
+- Spring
 
 
 Extra info
