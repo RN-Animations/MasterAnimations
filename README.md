@@ -2,9 +2,6 @@ Udemy course:
 [Master React Native Animations](https://www.udemy.com/course/master-react-native-animations/)
 
 
-### Check out:
-- Dynamic `inputRange` values @AnimatedQuestionnaire.
-- Is there a way to do the animation in Event.js but in place of an Animated.event use a PanResponder?
 
 ### Intro
  - Why You Should Animate
@@ -51,7 +48,7 @@ Lectures - modules:
 - Spring
 
 
-Extra info
+Additional info
 
 - [Animated.event](https://animationbook.codedaily.io/animated-event/)
 - [interpolation](https://facebook.github.io/react-native/docs/animations#interpolation)
@@ -62,3 +59,9 @@ Extra info
 - `getLayout` is a method of [AnimatedValueXY](https://facebook.github.io/react-native/docs/animatedvaluexy#getlayout)
 - [Tracking gestures](https://facebook.github.io/react-native/docs/animations#tracking-gestures)
 - [A gestureState object has the following](https://facebook.github.io/react-native/docs/panresponder#__docusaurus)
+
+
+
+### Check out:
+- Dynamic `inputRange` values @AnimatedQuestionnaire.
+- DONE! Do the animation in PG_Event.js but in place of an Animated.event in onScroll use an onPanResponderMove in a PanResponder?

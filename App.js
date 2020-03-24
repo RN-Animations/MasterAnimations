@@ -3,7 +3,6 @@ import { StyleSheet, View } from "react-native";
 
 import Event from "./src/Event";
 import PG_Event from "./src/PG_Event";
-
 import Decay from "./src/Decay";
 import CreateAnimatedComp from "./src/CreateAnimatedComp";
 import ParentPanReasponder from "./src/ParentPanResponder";
@@ -25,6 +24,7 @@ import FabButtonMenu from "./src/FabButtonMenu";
 import IntroScreens from "./src/IntroScreens";
 import EvolvingButton from "./src/EvolvingButton";
 import AnimatedSwipeAway from "./src/AnimatedSwipeAway";
+
 import PG_Decay from "./src/PG_Decay";
 import PG_KittenCards from "./src/PG_KittenCards";
 import Opacity from "./src/Opacity";
@@ -63,9 +63,10 @@ const App = () => {
     // <WidhtHeigthPercentage />
     // <EasingFunc />
     // <Spring />
-    <PG_Spring />
+    // <PG_Spring />
+
     // <Event />
-    // <PG_Event />
+    <PG_Event />
     // <Decay />
     // <PG_Decay />
     // <ParentPanReasponder/>
