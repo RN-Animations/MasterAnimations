@@ -1,6 +1,29 @@
 Udemy course:
 [Master React Native Animations](https://www.udemy.com/course/master-react-native-animations/)
 
+Lectures - modules:
+
+- Opacity
+- Translate Position
+- Scale
+- Width/Height Values
+- Absolute Position
+- Interpolation
+- Color/Background Color
+- Rotation, 
+- Width/Height Percentage
+- WidhtHeigthPercentage
+- Animated.Value Functions
+- Easing
+- Spring
+- Event
+- Decay
+- ParentPanResponder
+- CreateAnimatedComponent
+- SetNativeProps
+- ... advanced topics like d3 etc
+- Hidden
+
 
 
 ### Intro
@@ -30,25 +53,7 @@ Also here are some resources to get some inspiration for animations. Don't forge
 [Codrops](https://tympanus.net/codrops/)
 
 
-
-Lectures - modules:
-
-- Opacity
-- Translate Position
-- Scale
-- Width/Height Values
-- Absolute Position
-- Interpolation
-- Color/Background Color
-- Rotation, 
-- Width/Height Percentage
-- WidhtHeigthPercentage
-- Animated.Value Functions
-- Easing
-- Spring
-
-
-Additional info
+### Additional info
 
 - [Animated.event](https://animationbook.codedaily.io/animated-event/)
 - [interpolation](https://facebook.github.io/react-native/docs/animations#interpolation)

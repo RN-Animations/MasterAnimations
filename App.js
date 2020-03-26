@@ -4,9 +4,9 @@ import { StyleSheet, View } from "react-native";
 import Event from "./src/Event";
 import PG_Event from "./src/PG_Event";
 import Decay from "./src/Decay";
-import CreateAnimatedComp from "./src/CreateAnimatedComp";
 import ParentPanReasponder from "./src/ParentPanResponder";
-import CustomCreateAnimatedComp from "./src/CustomCreateAnimatedComp";
+import CreateAnimatedComp from "./src/CreateAnimatedComp";
+import PG_CreateAnimatedComp from "./src/PG_CreateAnimatedComp";
 import SetNativeProps from "./src/SetNativeProps";
 import Hidden from "./src/Hidden";
 import PointerEvents from "./src/PointerEvents";
@@ -66,14 +66,14 @@ const App = () => {
     // <PG_Spring />
 
     // <Event />
-    <PG_Event />
+    // <PG_Event />
     // <Decay />
     // <PG_Decay />
     // <ParentPanReasponder/>
     // <CreateAnimatedComp/>
-    // <CustomCreateAnimatedComp/>
+    // <PG_CreateAnimatedComp/>
     // <SetNativeProps/>
-    // <Hidden/>
+    <Hidden/>
     // <PointerEvents/>
     // <$4Corners/>
     // <StaggerHeads/>

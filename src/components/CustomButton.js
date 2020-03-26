@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text
 } from "react-native";
+import { black } from "ansi-colors";
 
 export default class CustomButton extends React.Component {
   render() {
@@ -13,10 +14,10 @@ export default class CustomButton extends React.Component {
         onPress={this.props.onPress}
       >
         <View
-          onPress={this.props.onPress}
-          style={[ styles.buttonStyle, {backgroundColor: this.props.backgroundColor}]  }
+          // onPress={this.props.onPress}
+          style={[ styles.buttonStyle, {backgroundColor: this.props.backgroundColor}, {...this.props.style}]  }
         >
-          <Text style={[ styles.text, {color: this.props.color} ]}>
+          <Text style={[ styles.text, {color: this.props.color},  ]}>
             {this.props.title}
           </Text>
         </View>
@@ -27,6 +28,8 @@ export default class CustomButton extends React.Component {
 
 const styles = StyleSheet.create({
   buttonStyle: {
+    borderColor: "black",
+    borderWidth: 1,
     marginVertical: 5,
     paddingBottom: 3,
     borderRadius: 15,
@@ -36,6 +39,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
-    textAlign: "center"
+    textAlign: "center",
+    padding: 20,
   }
 });

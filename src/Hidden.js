@@ -7,7 +7,7 @@ import {
   Animated,
   TouchableWithoutFeedback,
 } from "react-native";
-// Usefull for hidding modals!
+// Usefull for hiding modals!
 export default class Hidden extends Component {
   state = {
     animation: new Animated.Value(1),
@@ -19,7 +19,14 @@ export default class Hidden extends Component {
       duration: 1500, // enough time to interupt the animation
     }).start(({ finished }) => { // finished is the only property in there
         console.log('finished', finished);
-        
+        /* 
+        Here we want to deviate from which animation is being triggered.
+        What is `setTimeout` for?
+        When we trigger our animation and then, before it's finished we
+        trigger it again, the `setTimeout` will run synchronously and then 
+        the second animation will start. So `setTimeout` will just set up our
+        animation to trigger on the next click.
+        */
       setTimeout(() => {
         if (finished) {
           this.setState({ visible: false });

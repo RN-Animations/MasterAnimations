@@ -11,10 +11,11 @@ import {
 import CustomButton from "./components/CustomButton";
 
 const AnimatedButton = Animated.createAnimatedComponent(CustomButton);
-// Check also the video for the case you want to pass in a CustomButton...
-export default class CustomCreateAnimatedComp extends Component {
+
+export default class PG_CreateAnimatedComp extends Component {
   state = {
-    animation: new Animated.Value(0)
+    animation: new Animated.Value(0),
+    opacity: new Animated.Value(1)
   };
   // for the ref button
   // Here our customButton gets detected by animated,
@@ -27,12 +28,21 @@ export default class CustomCreateAnimatedComp extends Component {
     Animated.timing(this.state.animation, {
       toValue: 1,
       duration: 1500
-    }).start(() => {
-      Animated.timing(this.state.animation, {
-        toValue: 0,
-        duration: 300
-      }).start();
-    });
+    }).start();
+
+    Animated.loop(
+      Animated.sequence[
+        Animated.timing(this.state.opacity, {
+          toValue: 1,
+          duration: 2000
+        }),
+        Animated.delay(1000),
+        Animated.timing(this.state.opacity, {
+          toValue: 0,
+          duration: 2000
+        })
+      ]
+    ).start();
   };
 
   render() {
@@ -43,19 +53,27 @@ export default class CustomCreateAnimatedComp extends Component {
 
     const animatedBackgroundColor = this.state.animation.interpolate({
       inputRange: [0, 1],
-      outputRange: ["tomato", "lightblue"]
+      outputRange: ["white", "lightblue"]
     });
+    const animatedOpacity = this.state.opacity.interpolate({
+      inputRange: [0, 1],
+      outputRange: [1, 0]
+    });
+
+    const opacityStyle = {
+      opacity: animatedOpacity
+    };
 
     return (
       <View style={styles.container}>
         {/* Animated works also on props (like color) not only styles */}
         <AnimatedButton
-          ref={(ref) => (this.button = ref)}
-          title="Press Me"
+          ref={ref => (this.button = ref)}
+          title="Hello there"
           onPress={this.startAnimation}
           color={animatedColor}
           backgroundColor={animatedBackgroundColor}
-          // textStyle={animatedColor}
+          style={this.state.opacity}
         />
       </View>
     );

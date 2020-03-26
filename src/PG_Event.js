@@ -16,7 +16,7 @@ const PG_Event = () => {
   });
 
   const backgroundInterpolate = animation.interpolate({
-    inputRange: [0, 300],
+    inputRange: [0, 400],
     outputRange: ["rgb(255,99,71)", "rgb(99,701,255)"]
   });
 

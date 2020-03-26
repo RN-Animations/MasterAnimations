@@ -7,7 +7,7 @@ Intro
 
 One of the issues I've noticed with PanResponder is that people assume it is an all or nothing. By that I mean adding a PanResponder in a parent view means it will steal all of your touches and Touchable items won't be touchable any longer.
 
-You may be running into this because you copy and pasted it from here the documentation here https://facebook.github.io/react-native/docs/panresponder.html and it includes a capture phase returning true. (I copy and paste this all the time). We'll talk about the capture phase next.
+You may be running into this because you copy and pasted it from the documentation here https://facebook.github.io/react-native/docs/panresponder.html and it includes a capture phase returning true. (I copy and paste this all the time). We'll talk about the capture phase next.
 
 This is far from the case. As always, React Native internal code is all built on the same components you are using, so be sure and always read that code. Navigation is one example that uses a top level PanResponder and only deals with touches on the outer edge of the screen.
 
@@ -21,7 +21,7 @@ https://github.com/browniefed/react-native-parent-panresponder-touch
 
 - General PanResponder
 
-The React Native folk built the gesture responding system very similar to the web. The gesture system has a capture phase, just like the web. If you didn't know about the capture system on the web, there is one. The events go from a capture phase and back up through the bubble phase. You may have heard of "event bubbling" where the event starts at the inner most child then moves up each element. However before that the capture phase triggered and traversed from the top down to the element you clicked.
+The React Native folk built the gesture responding system very similar to the web. The gesture system has a capture phase, just like the web. If you didn't know about the capture system on the web, there is one. The events go from a capture phase and back up through the bubble phase. You may have heard of "event bubbling" where the event starts at the inner most child then moves up each element. However before that the capture phase triggered and traversed from the **top down** to the element you clicked.
 
 top => #random_parent => #random_child2 => thing you clicked => #random_child2 => #random_parent => top
 
@@ -31,7 +31,7 @@ After the capture phase the bottom level touched view will then move back up the
 
 At any point that a capture phase, or non capture phase returns `true` that `PanResponder` will receive the gesture. In that case `onResponderGrant` will be called, then `onResponderMove`, then eventually when the user removes their finger `onResponderRelease`.
 
-Now do remember the capture and bubble phase are happening on EACH finger movement. So that means if a parent view returns `true` in `onMoveShouldSetResponderCapture` phase then the touch will be taken away from the other active PanResponder
+Now do remember the `capture` and `bubble` phase are happening on EACH finger movement. So that means if a parent view returns `true` in `onMoveShouldSetResponderCapture` phase then the touch will be taken away from the other active PanResponder
 
 When that happens `onResponderTerminationRequest` is called on the active PanResponder if it returns `true` then `onResponderTerminate` is called. Basically you said "Sure whatever else wants the gesture they can have it".
 
@@ -48,7 +48,7 @@ When you need something, you need to decide do I want to do it on the first pres
 Mostly the reason you don't ever use these is as the default says "The deepest element gets focus". Aka a button you pressed gets pressed, typically that's what you want.
 
 That means:
-```
+```js
 <code>
 <SpecialViewToDoThings>
     <SomeCrazyScrollView>
