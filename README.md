@@ -23,6 +23,9 @@ Lectures - modules:
 - SetNativeProps
 - ... advanced topics like d3 etc
 - Hidden
+- Pointer Events
+- 4 Corners
+- Staggered Heads
 
 
 
@@ -70,3 +73,6 @@ Also here are some resources to get some inspiration for animations. Don't forge
 ### Check out:
 - Dynamic `inputRange` values @AnimatedQuestionnaire.
 - DONE! Do the animation in PG_Event.js but in place of an Animated.event in onScroll use an onPanResponderMove in a PanResponder?
+
+
+- In Staggered Heads: Change the opacity to .5 when you drag around the heads and then set it back to normal on release.

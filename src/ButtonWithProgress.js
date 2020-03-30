@@ -42,16 +42,16 @@ export default class ButtonWithProgress extends Component {
     });
 
     const progressStyle = {
-      width: progressInterpolate,
-      bottom: 0,
+      // width: progressInterpolate,
+      // bottom: 0,
 
       // height: progressInterpolate,
       // right: 0,
 
-      // top: null,
-      // bottom: 0,
-      // width: progressInterpolate,
-      // height: 5,
+      top: null,
+      bottom: 0,
+      width: progressInterpolate,
+      height: 5,
 
       opacity: this.state.opacity,
       backgroundColor: colorInterpolate,

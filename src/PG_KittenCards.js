@@ -54,6 +54,7 @@ export default class PG_KittenCards extends Component {
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponder: () => true,
+
       // Animated.event is a helper function to map arbitrary data to Animated values.
       // Since here we don't need gestrureState, we use Animated.event
       onPanResponderMove: Animated.event([
@@ -149,7 +150,7 @@ export default class PG_KittenCards extends Component {
     const cardScale = animation.x.interpolate({
       inputRange: [-200, 0, 200],
       outputRange: [0.1, 1, 0.1],
-      extrapolate: "clamp" // no more rotation than 30deg
+      extrapolate: "clamp" 
     });
     const cardTranslateY = animation.x.interpolate({
       inputRange: [-200, 0, 200],
@@ -157,7 +158,7 @@ export default class PG_KittenCards extends Component {
     });
     const cardTranslateX = animation.x.interpolate({
       inputRange: [-200, 0, 200],
-      outputRange: [20, 0, -20],
+      outputRange: [-200, 0, 200],
     });
 
     const opacity = animation.x.interpolate({
@@ -195,7 +196,7 @@ export default class PG_KittenCards extends Component {
     };
 
     const animatedCardStyles = {
-      transform: [{ rotate }, { scale: cardScale }, {translateY: cardTranslateY}, {translateX: cardTranslateX}],
+      transform: [{ rotate }, ...this.state.animation.getTranslateTransform()],
       opacity
     };
 

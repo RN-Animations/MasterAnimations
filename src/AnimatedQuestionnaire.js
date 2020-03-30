@@ -46,7 +46,7 @@ export default class AnimatedQuestionnaire extends Component {
           };
         },
         () => {
-          this.state.animation.setValue(0);
+          this.state.animation.setValue(0); // MORE SECURE !!!
         }
       );
       // this.state.animation.setValue(0); // it works here too
@@ -130,7 +130,6 @@ export default class AnimatedQuestionnaire extends Component {
     );
   }
 }
-// Add progress bar at bottom
 
 const styles = StyleSheet.create({
   container: {

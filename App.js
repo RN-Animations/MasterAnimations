@@ -73,7 +73,7 @@ const App = () => {
     // <CreateAnimatedComp/>
     // <PG_CreateAnimatedComp/>
     // <SetNativeProps/>
-    <Hidden/>
+    // <Hidden/>
     // <PointerEvents/>
     // <$4Corners/>
     // <StaggerHeads/>
@@ -81,7 +81,7 @@ const App = () => {
     // <PG_KittenCards/>
     // <StaggerFormFields/>
     // <ButtonWithProgress/>
-    // <AnimatedQuestionnaire/>
+    <AnimatedQuestionnaire/>
     // <$2nd_AnimatedQuestionnaire/>
     // <AnimatedNotification/>
     // <PhotoGrid/>

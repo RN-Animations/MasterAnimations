@@ -44,7 +44,7 @@ export default class StaggerFormFields extends Component {
   };
 
   componentDidMount() {
-    const timing = animation => {
+    const timingFunc = animation => {
       return Animated.timing(animation, {
         toValue: 1,
         duration: 200
@@ -52,10 +52,12 @@ export default class StaggerFormFields extends Component {
     };
 
     Animated.stagger(250, [
-      timing(this.state.email),
-      timing(this.state.password),
-      timing(this.state.button)
+      timingFunc(this.state.email),
+      timingFunc(this.state.password),
+      timingFunc(this.state.button)
     ]).start(() => {
+      // Because we used createAnimatedComponent to wrap our TextInput
+      // to get access to it we call getNode()
       this._email.getNode().focus();
     });
   }

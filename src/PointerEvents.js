@@ -8,8 +8,8 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
 } from "react-native";
-// Use it when to disable touching an animated component
-// This technic has a lot of re-rendering!!!
+// Use it to disable touching an animated component
+// ATTENTION! This technic has a lot of re-rendering!!!
 export default class PointerEvents extends Component {
   state = {
     animation: new Animated.Value(0),
