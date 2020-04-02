@@ -16,14 +16,16 @@ import images from "../utilities/imagesForPhotoGrid";
 /* In RN you can measure any element. It will return:
 x
 y
-width
+width 
 height
 pageX
 pageY
 
-So, we're going to measure the clicked image and then the measure also the place we want to
-animated to. Then animated it there with the new values.
-So we'll need access to the ref of the image, to get the coordinates and the size.
+So, we're going to measure the clicked image 
+and then measure also the place we want to
+animated to. Then animate it there with the new values.
+So we'll need access to the ref of the image, 
+to get the coordinates and the size.
 */
 export default class PhotoGrid extends Component {
   state = {
@@ -60,8 +62,9 @@ export default class PhotoGrid extends Component {
         x: width,
         y: height
       });
-
-      // Why we call setState in the measure func?
+    });
+      // Why we call setState inside the measure func?
+      // Well I moved setState outside and it still workd fine.
       // Ready to animate
       this.setState(
         {
@@ -69,7 +72,7 @@ export default class PhotoGrid extends Component {
           activeIndex: index
         },
         // this callback is equivalent to componentDidUpdate
-        // Here the image has appeared
+        // Here the image has appeared.
         () => {
           this._viewImage.measure((tX, tY, tWidth, tHeight, tPageX, tPageY) => {
             Animated.parallel([
@@ -92,7 +95,7 @@ export default class PhotoGrid extends Component {
           });
         }
       );
-    });
+ 
   };
 
   handleClose = () => {
@@ -182,7 +185,7 @@ export default class PhotoGrid extends Component {
         {/*  Set up a view to transition to */}
         <View
           style={StyleSheet.absoluteFill}
-          pointerEvents={this.state.activeImage ? "auto" : "none"}
+          pointerEvents={!!this.state.activeImage ? "auto" : "none"}
         >
           {/* This View takes the space we want to occupy with Animated.Image*/}
           <View

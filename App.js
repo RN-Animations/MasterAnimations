@@ -16,7 +16,7 @@ import KittenCards from "./src/KittenCards";
 import StaggerFormFields from "./src/StaggerFormFields";
 import ButtonWithProgress from "./src/ButtonWithProgress";
 import AnimatedQuestionnaire from "./src/AnimatedQuestionnaire";
-import $2nd_AnimatedQuestionnaire from "./src/$2nd_AnimatedQuestionnaire";
+import PG_AnimatedQuestionnaire from "./src/PG_AnimatedQuestionnaire";
 import AnimatedNotification from "./src/AnimatedNotification";
 import PhotoGrid from "./src/PhotoGrid";
 import ColorPicker from "./src/ColorPicker";
@@ -44,6 +44,9 @@ import WidhtHeigthPercentage from "./src/WidthHeightPercentage";
 import EasingFunc from "./src/Easing";
 import Spring from "./src/Spring";
 import PG_Spring from "./src/PG_Spring";
+import PG_AnimatedNotification from "./src/PG_AnimatedNotification";
+import PG_ColorPicker from "./src/PG_ColorPicker";
+import PG_FabButtonMenu from "./src/PG_FabButtonMenu";
 
 const App = () => {
   return (
@@ -81,12 +84,15 @@ const App = () => {
     // <PG_KittenCards/>
     // <StaggerFormFields/>
     // <ButtonWithProgress/>
-    <AnimatedQuestionnaire/>
-    // <$2nd_AnimatedQuestionnaire/>
+    // <AnimatedQuestionnaire/>
+    // <PG_AnimatedQuestionnaire/>
     // <AnimatedNotification/>
+    // <PG_AnimatedNotification/>
     // <PhotoGrid/>
     // <ColorPicker/>
+    // <PG_ColorPicker />
     // <FabButtonMenu/>
+    <PG_FabButtonMenu />
     // <IntroScreens/>
     // <EvolvingButton/>
     // <AnimatedSwipeAway/>

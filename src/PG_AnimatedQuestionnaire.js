@@ -10,7 +10,7 @@ import {
   Easing
 } from "react-native";
 
-export default class $2nd_AnimatedQuestionnaire extends Component {
+export default class PG_AnimatedQuestionnaire extends Component {
   state = {
     No: false,
     index: 0,

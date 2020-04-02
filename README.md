@@ -26,6 +26,18 @@ Lectures - modules:
 - Pointer Events
 - 4 Corners
 - Staggered Heads
+- KittenCards
+- StaggerFormFields
+- ButtonWithProgress
+- AnimatedQuestionnaire
+
+* Advanced  Real World
+- PhotoGrid (hard)
+- ColorPicker
+- FabButtonMenu
+- IntroScreens
+- EvolvingButton
+- AnimatedSwipeAway  
 
 
 

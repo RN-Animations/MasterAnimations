@@ -15,9 +15,10 @@ import Icon from "react-native-vector-icons/Foundation";
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 const AnimatedIcon = Animated.createAnimatedComponent(Icon);
 
-export default class ColorPicker extends Component {
+export default class PG_ColorPicker extends Component {
   state = {
     animation: new Animated.Value(0), // open/close animation
+    rowAnimation: new Animated.Value(0),
     buttonAnimation: new Animated.Value(0),
     color: "#000", // drive the value in the input
     inputOpen: false
@@ -25,9 +26,13 @@ export default class ColorPicker extends Component {
 
   handleToggle = () => {
     const toValue = this._open ? 0 : 1;
-    Animated.spring(this.state.animation, {
-      toValue
-    }).start();
+      Animated.spring(this.state.animation, {
+        toValue,
+      }).start()
+      Animated.timing(this.state.rowAnimation, {
+        toValue,
+        duration: 400
+      }).start();
 
     this._open = !this._open;
   };
@@ -54,15 +59,15 @@ export default class ColorPicker extends Component {
   };
 
   render() {
-    const scaleXInterpolate = this.state.animation.interpolate({
+    const scaleXInterpolate = this.state.rowAnimation.interpolate({
       // execute animation after half of it (.5) is completed
-      inputRange: [0, 0.5, 1],
-      outputRange: [0, 0, 1]
+      inputRange: [0, 1],
+      outputRange: [0, 1]
     });
 
     const translateYInterpolate = this.state.animation.interpolate({
       inputRange: [0, 1],
-      outputRange: [150, 0]
+      outputRange: [100, 0]
     });
 
     const rowStyle = {

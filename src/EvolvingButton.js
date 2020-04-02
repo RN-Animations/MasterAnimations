@@ -50,14 +50,14 @@ export default class EvolvingButton extends Component {
       opacity: opacityToolbarInterpolate
     };
 
-    const editotHeightInterpolate = this.state.animation.interpolate({
+    const editorHeightInterpolate = this.state.animation.interpolate({
       inputRange: [0.7, 1],
       outputRange: [0, 150],
       extrapolate: "clamp"
     });
     const editorStyles = {
       opacity: this.state.animation,
-      height: editotHeightInterpolate
+      height: editorHeightInterpolate
     };
 
     const opacityButtonInterpolate = this.state.animation.interpolate({

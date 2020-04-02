@@ -1,7 +1,7 @@
 Dynamic Animated Notifications
 Intro
 
-Adding a system for errors, and notifications to your app is crucial. It provides valuable feedback so your users can stay informed, and take necessary actions. React Native makes it easy to build a notification view that can be dynamically sized and animate so that feedback isn't jarring.
+Adding a system for errors, and notifications to your app is crucial. It provides valuable feedback so your users can stay informed, and take necessary actions. React Native makes it easy to build a notification view that can be dynamically sized and animate so that feedback isn't jarring (= αταίριαστος).
 
 We'll walk through the few steps to setup a notification view, animate it into view, and finally animate it out of view.
 
@@ -213,7 +213,7 @@ notification: {
   },
 </code>
 ```
-The notificationText is merely adding a white color. The notification is what will position and style our notification. We use position: "absolute" so our notification won't be effected by our container styling. We add some padding so our internal notification text isn't right on the edge of our screen.
+The notificationText is merely adding a white color. The notification is what will position and style our notification. **We use position: "absolute" so our notification won't be effected by our container styling**. We add some padding so our internal notification text isn't right on the edge of our screen.
 
 Finally we use left: 0, right: 0, top: 0 to position the view at the top and across the screen. This will size the notification view to the edges of it's parent container. In our case the parent container is the container view which takes up the entire screen. So our notification view will stretch across the screen.
 
@@ -269,11 +269,11 @@ this.setState(
 ```
 The syntax here may look odd. What is happening is we are calling setState. The second function we pass to setState is equivalent to componentDidUpdate. What this means is that the notification text has officially been rendered and updated. That means when we measure the notification view it will return accurate values.
 
-The measure returns 6 different arguments, however the one we only care about is height.
+The measure returns 6 different arguments, however the one we only care about is `height`.
 
 Animate In
 
-We need to control the offset of our notification view. This will always be set to the height of the view right before we animate it.
+We need to control the `offset` of our notification view. This will always be set to the height of the view right before we animate it.
 
 So we'll mutate our state to look like
 
@@ -433,7 +433,7 @@ handlePress = () => {
     );
   };
 </code>
-
+```
 
 Final
 
@@ -442,3 +442,18 @@ These techniques can be applied to many different types of views and situations.
 If you switched the height to use the width you could create a toast like animation notification system where the notification slides in from the left, or right.
 
 Additionally if you were to switch over the positioning of the notification to be bottom: 0 you could have the notification slide in from the bottom.
+
+- Additional info
+
+measure(callback)
+
+Determines the location on screen, width, and height of the given view and returns the values via an async callback. If successful, the callback will be called with the following arguments:
+
+* x
+* y
+* width
+* height
+* pageX
+* pageY
+
+Note that these measurements are not available until after the rendering has been completed in native. If you need the measurements as soon as possible and you don't need pageX and pageY, consider using the onLayout prop instead.
