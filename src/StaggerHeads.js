@@ -51,7 +51,7 @@ export default class StaggerHeads extends Component {
           animation.extractOffset();
           // setValue Animated bug fix
           /* When we call `extractOffset` the value is manipulated synchronously.
-          It's not going through `setValue`, that would stop every other animation,
+          It's not going through `setValue`, that would stop every other animation.
           So if the `animation.Spring` doesn't come to a rest 
           and then you start another,
           the heads will jump around. That is why we use setValue.

@@ -106,10 +106,17 @@ export default class IntroScreens extends Component {
     const screen2Styles = getScreen2Styles(this.state.animation, width);
     const screen3Styles = getScreen3Styles(this.state.animation, width);
     /*  pagingEnabled
-        When true, the scroll view stops on multiples of the scroll view's size when scrolling. This can be used for horizontal pagination. The default value is false.
+        When true, the scroll view stops on multiples 
+        of the scroll view's size when scrolling. 
+        This can be used for horizontal pagination. 
+        The default value is false.
         Note: Vertical pagination is not supported on Android. 
         onScroll
-        Fires at most once per frame during scrolling. The frequency of the events can be controlled using the scrollEventThrottle prop. The event has the shape { nativeEvent: { 
+        Fires at most once per frame during scrolling. 
+        The frequency of the events can be controlled 
+        using the scrollEventThrottle prop. 
+        The event has the shape 
+        { nativeEvent: { 
                     contentInset: { bottom, left, right, top }, 
                     contentOffset: { x, y }, 
                     contentSize: { height, width }, 

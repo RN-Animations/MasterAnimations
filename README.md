@@ -34,7 +34,7 @@ Lectures - modules:
 * Advanced  Real World
 - PhotoGrid (hard)
 - ColorPicker
-- FabButtonMenu
+- Floating Action Button Menu = FaButton
 - IntroScreens
 - EvolvingButton
 - AnimatedSwipeAway  

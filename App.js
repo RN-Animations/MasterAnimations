@@ -47,6 +47,7 @@ import PG_Spring from "./src/PG_Spring";
 import PG_AnimatedNotification from "./src/PG_AnimatedNotification";
 import PG_ColorPicker from "./src/PG_ColorPicker";
 import PG_FabButtonMenu from "./src/PG_FabButtonMenu";
+import PG_IntroScreens from "./src/PG_IntroScreens";
 
 const App = () => {
   return (
@@ -92,8 +93,9 @@ const App = () => {
     // <ColorPicker/>
     // <PG_ColorPicker />
     // <FabButtonMenu/>
-    <PG_FabButtonMenu />
+    // <PG_FabButtonMenu />
     // <IntroScreens/>
+    <PG_IntroScreens/>
     // <EvolvingButton/>
     // <AnimatedSwipeAway/>
   );
