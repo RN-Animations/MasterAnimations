@@ -48,6 +48,10 @@ import PG_AnimatedNotification from "./src/PG_AnimatedNotification";
 import PG_ColorPicker from "./src/PG_ColorPicker";
 import PG_FabButtonMenu from "./src/PG_FabButtonMenu";
 import PG_IntroScreens from "./src/PG_IntroScreens";
+import PG_EvolvingButton from "./src/PG_EvolvingButton";
+import HorizontalParallaxScrollView from "./src/HorizontalParallaxScrollView";
+import PG_HorizontalParallaxScrollView from "./src/PG_HorizontalParallaxScrollView";
+import FloatingHearts from "./src/FloatingHearts";
 
 const App = () => {
   return (
@@ -95,9 +99,13 @@ const App = () => {
     // <FabButtonMenu/>
     // <PG_FabButtonMenu />
     // <IntroScreens/>
-    <PG_IntroScreens/>
+    // <PG_IntroScreens/>
     // <EvolvingButton/>
+    // <PG_EvolvingButton />
     // <AnimatedSwipeAway/>
+    // <HorizontalParallaxScrollView />
+    // <PG_HorizontalParallaxScrollView/>
+    <FloatingHearts/>
   );
 };
 
