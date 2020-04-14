@@ -35,6 +35,60 @@ Animated.event([
 </code>
 ```
 
+The output of the event from the listener:
+`{ listener: event => console.log(event) }`
+
+```js
+SyntheticEvent {
+  "_dispatchInstances": FiberNode {
+    "tag": 5,
+    "key": null,
+    "type": "RCTScrollView",
+  },
+  "_dispatchListeners": [Function anonymous],
+  "_targetInst": FiberNode {
+    "tag": 5,
+    "key": null,
+    "type": "RCTScrollView",
+  },
+  "bubbles": undefined,
+  "cancelable": undefined,
+  "currentTarget": 7,
+  "defaultPrevented": undefined,
+  "dispatchConfig": Object {
+    "registrationName": "onScroll",
+  },
+  "eventPhase": undefined,
+  "isDefaultPrevented": [Function functionThatReturnsFalse],
+  "isPropagationStopped": [Function functionThatReturnsFalse],
+  "isTrusted": undefined,
+  "nativeEvent": Object {
+    "contentInset": Object {
+      "bottom": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+    },
+    "contentOffset": Object {
+      "x": 0,
+      "y": -15.666666666666666,
+    },
+    "contentSize": Object {
+      "height": 3000,
+      "width": 414,
+    },
+    "layoutMeasurement": Object {
+      "height": 896,
+      "width": 414,
+    },
+    "zoomScale": 1,
+  },
+  "target": undefined,
+  "timeStamp": 1586845806480,
+  "type": undefined,
+}
+```
+
 Extra info
 
 - [Animated.event](https://animationbook.codedaily.io/animated-event/)

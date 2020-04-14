@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Animated, ScrollView } from "react-native";
 
-
 /* 
 The Animated.event is a utility method to automatically 
 set a value on an Animated.Value given an array/keys to traverse. 
@@ -74,15 +73,18 @@ const Event = () => {
         This will traverse the first event argument that gets called,
         and then automatically call setValue on animation
         */
-        onScroll={Animated.event([
-          {
-            nativeEvent: {
-              contentOffset: {
-                y: animation
+        onScroll={Animated.event(
+          [
+            {
+              nativeEvent: {
+                contentOffset: {
+                  y: animation
+                }
               }
             }
-          }
-        ])}
+          ],
+          { listener: event => console.log(event) }
+        )}
       >
         <Animated.View style={[styles.content, backgroundStyle]} />
       </ScrollView>
