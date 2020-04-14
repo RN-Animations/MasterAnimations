@@ -83,7 +83,7 @@ const Event = () => {
               }
             }
           ],
-          { listener: event => console.log(event) }
+          // { listener: event => console.log(event) }
         )}
       >
         <Animated.View style={[styles.content, backgroundStyle]} />
