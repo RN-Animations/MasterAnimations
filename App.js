@@ -52,6 +52,10 @@ import PG_EvolvingButton from "./src/PG_EvolvingButton";
 import HorizontalParallaxScrollView from "./src/HorizontalParallaxScrollView";
 import PG_HorizontalParallaxScrollView from "./src/PG_HorizontalParallaxScrollView";
 import FloatingHearts from "./src/FloatingHearts";
+import PG_FloatingHearts from "./src/PG_FloatingHearts";
+import BouncingHeartButton from "./src/BouncingHeartButton";
+import ExplodingHeartButton from "./src/ExplodingHeartButton";
+import ExpandingNotifyInput from "./src/ExpandingNotifyInput";
 
 const App = () => {
   return (
@@ -79,7 +83,7 @@ const App = () => {
     // <PG_Decay />
     // <ParentPanReasponder/>
     // <CreateAnimatedComp/>
-    // <PG_CreateAnimatedComp/>
+    <PG_CreateAnimatedComp/>
     // <SetNativeProps/>
     // <Hidden/>
     // <PointerEvents/>
@@ -105,7 +109,11 @@ const App = () => {
     // <AnimatedSwipeAway/>
     // <HorizontalParallaxScrollView />
     // <PG_HorizontalParallaxScrollView/>
-    <FloatingHearts/>
+    // <FloatingHearts/>
+    // <PG_FloatingHearts />
+    // <BouncingHeartButton />
+    // <ExplodingHeartButton />
+    // <ExpandingNotifyInput />
   );
 };
 

@@ -23,7 +23,8 @@ into the first array spot in Animated.event
 In the case of an onScroll from a ScrollView you need to provide 
 a few levels of instructions.
 
-<code class="js language-js">Animated.event([
+<code class="js language-js">
+Animated.event([
 {
   nativeEvent: {
     contentOffset: {
@@ -41,7 +42,8 @@ In the case of a PanResponder you would skip the event piece
 with null and only provide instructions to automatically 
 set animated values from gestureState
 
-<code class="js language-js">Animated.event([
+<code class="js language-js">
+Animated.event([
   null,
   {
     dx: this._animation.x,
