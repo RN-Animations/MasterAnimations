@@ -56,6 +56,7 @@ import PG_FloatingHearts from "./src/PG_FloatingHearts";
 import BouncingHeartButton from "./src/BouncingHeartButton";
 import ExplodingHeartButton from "./src/ExplodingHeartButton";
 import ExpandingNotifyInput from "./src/ExpandingNotifyInput";
+import PG_4Corners from "./src/PG_4Corners";
 
 const App = () => {
   return (
@@ -83,11 +84,12 @@ const App = () => {
     // <PG_Decay />
     // <ParentPanReasponder/>
     // <CreateAnimatedComp/>
-    <PG_CreateAnimatedComp/>
+    // <PG_CreateAnimatedComp/>
     // <SetNativeProps/>
     // <Hidden/>
     // <PointerEvents/>
     // <$4Corners/>
+    <PG_4Corners />
     // <StaggerHeads/>
     // <KittenCards/>
     // <PG_KittenCards/>
