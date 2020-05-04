@@ -44,10 +44,13 @@ export default class StaggerHeads extends Component {
           // and moves them in the `offset`,
           // before they override the animated values.
           // So we save the position that the animation is currently at.
+          
           /* From the docs: 
+          `extractOffset`: 
           Sets the offset value to the base value, 
           and resets the base value to zero. 
-          The final output of the value is unchanged. */
+          The final output of the value is unchanged. 
+          */
           animation.extractOffset();
           // setValue Animated bug fix
           /* When we call `extractOffset` the value is manipulated synchronously.

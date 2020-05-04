@@ -69,11 +69,11 @@ export default class PG_KittenCards extends Component {
 
         if (vx >= 0) {
           // 3 is minimum and 5 is max
-          velocity = clamp(vx, 3, 5);
+          velocity = clamp(vx, 7, 9);
         } else if (vx < 0) {
           // Math.abs to convert it to positive for clamp
           // * - 1, to convert it to negative againg so it swipes to the left.
-          velocity = clamp(Math.abs(vx), 3, 5) * -1;
+          velocity = clamp(Math.abs(vx), 7, 9) * -1;
         }
         if (Math.abs(dx) > SWIPE_THRESHOLD) {
           Animated.decay(this.state.animation, {
@@ -127,13 +127,15 @@ export default class PG_KittenCards extends Component {
   };
   // Assing to animation.x the according SWIPE_THRESHOLD and start the animation.
   handleNo = () => {
-    Animated.timing(this.state.animation.x, {
-      toValue: -SWIPE_THRESHOLD
+    Animated.decay(this.state.animation, {
+      velocity: { x: -5, y: 0 },
+      deceleration: 0.99
     }).start(this.transitionNext);
   };
   handleYes = () => {
-    Animated.timing(this.state.animation.x, {
-      toValue: SWIPE_THRESHOLD
+    Animated.decay(this.state.animation, {
+      velocity: { x: 5, y: 0 },
+      deceleration: 0.99
     }).start(this.transitionNext);
   };
 
