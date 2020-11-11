@@ -21,7 +21,9 @@ export default class Decay extends Component {
   };
 
   UNSAFE_componentWillMount() {
-    // We either use these or the extractOffset
+    // To fix that jump because of the delta value
+    // that goes on top of the animated value...,
+    // we either use these or the extractOffset
     // this._x = 0;
     // this._y = 0;
 
@@ -37,6 +39,7 @@ export default class Decay extends Component {
         // this.state.animation.setOffset({ x: this._x, y: this._y });
         // this.state.animation.setValue({ x: 0, y: 0 });
 
+        // This does all the above with the _x, _y values, the listener etc.
         this.state.animation.extractOffset();
       },
       onPanResponderMove: Animated.event([
@@ -45,6 +48,11 @@ export default class Decay extends Component {
         { dx: this.state.animation.x, dy: this.state.animation.y }
       ]),
       // { vx, vy } = deconstructing gestureState
+      // Alternative:
+      /* Animated.decay(this.state.animation, {   // coast to a stop
+      velocity: {x: gestureState.vx, y: gestureState.vy}, // velocity from gesture release
+      deceleration: 0.997,
+        }) */
       onPanResponderRelease: (e, { vx, vy }) => {
         Animated.decay(this.state.animation, {
           velocity: { x: vx, y: vy },

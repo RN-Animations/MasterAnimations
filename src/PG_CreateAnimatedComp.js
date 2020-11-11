@@ -25,24 +25,28 @@ export default class PG_CreateAnimatedComp extends Component {
   };
 
   startAnimation = () => {
-    Animated.timing(this.state.animation, {
-      toValue: 1,
-      duration: 1500
-    }).start();
-
-    Animated.loop(
-      Animated.sequence[
-        Animated.timing(this.state.opacity, {
+    Animated.sequence([
+      Animated.loop(
+        Animated.timing(this.state.animation, {
           toValue: 1,
-          duration: 2000
+          duration: 1500
         }),
+        (Animated.timing(this.state.opacity, {
+          toValue: 1,
+          duration: 1500
+        }),
+        // NOT LOOPING BACK !!! ???
         Animated.delay(1000),
+        Animated.timing(this.state.animation, {
+          toValue: 0,
+          duration: 1500
+        }),
         Animated.timing(this.state.opacity, {
           toValue: 0,
-          duration: 2000
-        })
-      ]
-    ).start();
+          duration: 1500
+        }))
+      )
+    ]).start();
   };
 
   render() {
@@ -57,7 +61,7 @@ export default class PG_CreateAnimatedComp extends Component {
     });
     const animatedOpacity = this.state.opacity.interpolate({
       inputRange: [0, 1],
-      outputRange: [1, 0]
+      outputRange: [0, 1]
     });
 
     const opacityStyle = {
@@ -73,7 +77,7 @@ export default class PG_CreateAnimatedComp extends Component {
           onPress={this.startAnimation}
           color={animatedColor}
           backgroundColor={animatedBackgroundColor}
-          style={this.state.opacity}
+          style={{ opacityStyle }}
         />
       </View>
     );

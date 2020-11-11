@@ -9,7 +9,8 @@ import CreateAnimatedComp from "./src/CreateAnimatedComp";
 import PG_CreateAnimatedComp from "./src/PG_CreateAnimatedComp";
 import SetNativeProps from "./src/SetNativeProps";
 import Hidden from "./src/Hidden";
-import PointerEvents from "./src/PointerEvents";
+import Point99Cliff from "./src/Point99Cliff";
+import PsointerEvents from "./src/PointerEvents";
 import $4Corners from "./src/4Corners";
 import StaggerHeads from "./src/StaggerHeads";
 import KittenCards from "./src/KittenCards";
@@ -82,14 +83,15 @@ const App = () => {
     // <PG_Event />
     // <Decay />
     // <PG_Decay />
-    // <ParentPanReasponder/>
-    // <CreateAnimatedComp/>
-    // <PG_CreateAnimatedComp/>
-    // <SetNativeProps/>
+    // <ParentPanReasponder />
+    // <CreateAnimatedComp />
+    // <PG_CreateAnimatedComp />
+    // <SetNativeProps />
+    <Point99Cliff />
     // <Hidden/>
     // <PointerEvents/>
     // <$4Corners/>
-    <PG_4Corners />
+    // <PG_4Corners />
     // <StaggerHeads/>
     // <KittenCards/>
     // <PG_KittenCards/>

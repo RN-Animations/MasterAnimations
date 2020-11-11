@@ -7,7 +7,7 @@ import {
   View,
   PanResponder,
   TouchableOpacity,
-  Dimensions,
+  Dimensions
 } from "react-native";
 
 const { width, height } = Dimensions.get("window");
@@ -38,24 +38,25 @@ const getDirectionAndColor = ({ moveX, moveY, dx, dy }) => {
 
 export default class ParentPanReasponder extends Component {
   state = {
-    zone: "Still Touchable",
+    zone: "Still Touchable"
   };
   UNSAFE_componentWillMount() {
     this._panResponder = PanResponder.create({
-      onMoveShouldSetPanResponder: (evt, gestureState) => !!getDirectionAndColor(gestureState),
+      onMoveShouldSetPanResponder: (evt, gestureState) =>
+        !!getDirectionAndColor(gestureState),
       onPanResponderMove: (evt, gestureState) => {
         const drag = getDirectionAndColor(gestureState);
         this.setState({
-          zone: drag,
+          zone: drag
         });
       },
-      onPanResponderTerminationRequest: (evt, gestureState) => true,
+      onPanResponderTerminationRequest: (evt, gestureState) => true
     });
   }
 
   onPress = () => {
     this.setState({
-      zone: "I got touched with a parent pan responder",
+      zone: "I got touched with a parent pan responder"
     });
   };
 
@@ -77,20 +78,20 @@ export default class ParentPanReasponder extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   center: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   zone1: {
-    top: 40,
+    top: 0,
     left: 0,
     right: 0,
     height: 50,
     position: "absolute",
-    backgroundColor: "red",
+    backgroundColor: "red"
   },
   zone2: {
     left: 0,
@@ -98,6 +99,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     height: 50,
     position: "absolute",
-    backgroundColor: "blue",
-  },
+    backgroundColor: "blue"
+  }
 });

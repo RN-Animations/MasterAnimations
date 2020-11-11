@@ -10,7 +10,7 @@ Lectures - modules:
 - Absolute Position
 - Interpolation
 - Color/Background Color
-- Rotation, 
+- Rotation,
 - Width/Height Percentage
 - WidhtHeigthPercentage
 - Animated.Value Functions
@@ -31,21 +31,25 @@ Lectures - modules:
 - ButtonWithProgress
 - AnimatedQuestionnaire
 
-* Advanced  Real World
+* Advanced Real World
+
 - PhotoGrid (hard)
 - ColorPicker
 - Floating Action Button Menu = FaButton
 - IntroScreens
 - EvolvingButton
-- AnimatedSwipeAway  
-
-
+- AnimatedSwipeAway
 
 ### Intro
- - Why You Should Animate
-Animations should be used to improve the user experience of your application. They shouldn't be used just to delight the user as these tend to end up being pointless and actually hinder your users.
 
-Animations can be used to reduce cognitive load, define relationships between elements, provide visual hints, and much more.
+- Why You Should Animate
+  Animations should be used to improve the user experience of your application. They shouldn't be used just to delight the user as these tend to end up being pointless and actually hinder your users.
+
+Animations can be used to:
+
+- reduce cognitive load,
+- define relationships between elements,
+- provide visual hints, and much more.
 
 The focus of this book is going to be teaching you the Animated library inside of React Native. If you need a reason to animate there are a TON of studies/posts/research on animations that serve a purpose.
 
@@ -67,7 +71,6 @@ Also here are some resources to get some inspiration for animations. Don't forge
 
 [Codrops](https://tympanus.net/codrops/)
 
-
 ### Additional info
 
 - [Animated.event](https://animationbook.codedaily.io/animated-event/)
@@ -80,11 +83,9 @@ Also here are some resources to get some inspiration for animations. Don't forge
 - [Tracking gestures](https://facebook.github.io/react-native/docs/animations#tracking-gestures)
 - [A gestureState object has the following](https://facebook.github.io/react-native/docs/panresponder#__docusaurus)
 
-
-
 ### Check out:
+
 - Dynamic `inputRange` values @AnimatedQuestionnaire.
 - DONE! Do the animation in PG_Event.js but in place of an Animated.event in onScroll use an onPanResponderMove in a PanResponder?
 
-
-- In Staggered Heads: Change the opacity to .5 when you drag around the heads and then set it back to normal on release.
+* In Staggered Heads: Change the opacity to .5 when you drag around the heads and then set it back to normal on release.

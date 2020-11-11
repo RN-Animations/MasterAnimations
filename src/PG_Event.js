@@ -9,7 +9,8 @@ const PG_Event = () => {
     onPanResponderMove: Animated.event([
       null,
       {
-        dy: animation
+        dy: animation,
+        dx: animation
       }
     ]),
     onPanResponderTerminationRequest: (evt, gestureState) => true
@@ -25,15 +26,17 @@ const PG_Event = () => {
   };
   return (
     <View style={styles.container}>
-      <Animated.View style={[styles.content, backgroundStyle]}  
-      {...panResponder.panHandlers} />
+      <Animated.View
+        style={[styles.content, backgroundStyle]}
+        {...panResponder.panHandlers}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   content: {
     height: 3000

@@ -51,14 +51,14 @@ export default class StaggerFormFields extends Component {
       });
     };
 
-    Animated.stagger(250, [
+    Animated.stagger(250, [ 
       timingFunc(this.state.email),
       timingFunc(this.state.password),
       timingFunc(this.state.button)
     ]).start(() => {
       // Because we used createAnimatedComponent to wrap our TextInput
       // to get access to it we call getNode()
-      this._email.getNode().focus();
+      // this._email.getNode().focus();
     });
   }
 
@@ -79,7 +79,8 @@ export default class StaggerFormFields extends Component {
             <View style={styles.container}>
               <Text style={styles.title}>Login</Text>
               <AnimatedTextInput
-                ref={email => (this._email = email)}
+                // ref={email => (this._email = email)}
+                autoFocus={true}
                 style={[styles.input, emailStyle]}
                 placeholder="Email"
                 keyboardType="email-address"
