@@ -63,39 +63,39 @@ export default class PhotoGrid extends Component {
         y: height
       });
     });
-      // Why we call setState inside the measure func?
-      // Well I moved setState outside and it still workd fine.
-      // Ready to animate
-      this.setState(
-        {
-          activeImage: images[index],
-          activeIndex: index
-        },
-        // this callback is equivalent to componentDidUpdate
-        // Here the image has appeared.
-        () => {
-          this._viewImage.measure((tX, tY, tWidth, tHeight, tPageX, tPageY) => {
-            Animated.parallel([
-              Animated.spring(this.state.position.x, {
-                toValue: tPageX
-              }),
-              Animated.spring(this.state.position.y, {
-                toValue: tPageY
-              }),
-              Animated.spring(this.state.size.x, {
-                toValue: tWidth
-              }),
-              Animated.spring(this.state.size.y, {
-                toValue: tHeight
-              }),
-              Animated.spring(this.state.animation, {
-                toValue: 1
-              })
-            ]).start();
-          });
-        }
-      );
- 
+    // Why we call setState inside the measure func?
+    // Well I moved setState outside and it still worked fine.
+    // Ready to animate
+    this.setState(
+      {
+        activeImage: images[index],
+        activeIndex: index
+      },
+      // this callback is equivalent to componentDidUpdate
+      // Here the image has appeared.
+      () => {
+        // `t` is for target
+        this._viewImage.measure((tX, tY, tWidth, tHeight, tPageX, tPageY) => {
+          Animated.parallel([
+            Animated.spring(this.state.position.x, {
+              toValue: tPageX
+            }),
+            Animated.spring(this.state.position.y, {
+              toValue: tPageY
+            }),
+            Animated.spring(this.state.size.x, {
+              toValue: tWidth
+            }),
+            Animated.spring(this.state.size.y, {
+              toValue: tHeight
+            }),
+            Animated.spring(this.state.animation, {
+              toValue: 1
+            })
+          ]).start();
+        });
+      }
+    );
   };
 
   handleClose = () => {
@@ -164,7 +164,6 @@ export default class PhotoGrid extends Component {
             {/* If we would add images dynamically, then they should be on state. */}
             {images.map((src, index) => {
               const style =
-              // Maybe activeIndex should be activeImage!
                 index === this.state.activeIndex ? activeIndexStyle : undefined;
               return (
                 <TouchableWithoutFeedback
@@ -192,7 +191,7 @@ export default class PhotoGrid extends Component {
             style={styles.topContent}
             // to get the measurements of the space we want to occupy
             ref={image => (this._viewImage = image)} // does not work for android
-            onLayout={() => {}} // this tells React that we need access to the measurements
+            onLayout={() => {}} // For Android - this tells React that we need access to the measurements
           ></View>
 
           <Animated.View style={[styles.content, animatedContentStyles]}>
@@ -238,7 +237,7 @@ const styles = StyleSheet.create({
   },
   gridImage: {
     width: "33%",
-    height: 150 // actually calculate per screen size
+    height: 120 // actually calculate per screen size
   },
   // these will be overriden when animation runs
   viewImage: {

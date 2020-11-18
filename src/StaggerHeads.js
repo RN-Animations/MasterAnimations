@@ -44,7 +44,7 @@ export default class StaggerHeads extends Component {
           // and moves them in the `offset`,
           // before they override the animated values.
           // So we save the position that the animation is currently at.
-          
+
           /* From the docs: 
           `extractOffset`: 
           Sets the offset value to the base value, 
@@ -94,6 +94,15 @@ export default class StaggerHeads extends Component {
           .slice(0)
           .reverse()
           .map((item, index, items) => {
+            console.log(
+              "item....",
+              item,
+              "index.....",
+              index,
+              "items....",
+              items.length
+            );
+
             const pan =
               index === items.length - 1 ? this._panResponder.panHandlers : {};
 

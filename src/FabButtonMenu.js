@@ -71,39 +71,49 @@ export default class FabButtonMenu extends Component {
     });
     const labelStyle = {
       opacity: opacityInterpolate,
-      transform: [{
-        translateX: labelPositionInterpolate
-      }]
+      transform: [
+        {
+          translateX: labelPositionInterpolate
+        }
+      ]
     };
 
-      const bgStyle = {
-        transform: [{
+    const bgStyle = {
+      transform: [
+        {
           scale: this.state.animation.interpolate({
-              inputRange: [0, 1],
-              outputRange: [0, 30]
+            inputRange: [0, 1],
+            outputRange: [0, 30]
           })
-        }]
-      };
+        }
+      ]
+    };
     return (
       <View style={styles.container}>
-          {/* self closing tag */}
-          <Animated.View style={[styles.background, bgStyle]}/> 
+        {/* self closing tag */}
+        <Animated.View style={[styles.background, bgStyle]} />
         <TouchableWithoutFeedback>
           <Animated.View style={[styles.button, styles.other, orderStyle]}>
-            <Animated.Text style={[styles.label, labelStyle]}>Order</Animated.Text>
+            <Animated.Text style={[styles.label, labelStyle]}>
+              Order
+            </Animated.Text>
             <Icon name="food-fork-drink" size={20} color="#555" />
           </Animated.View>
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback>
           <Animated.View style={[styles.button, styles.other, reloadStyle]}>
-            <Animated.Text style={[styles.label, labelStyle]}>Reload</Animated.Text>
+            <Animated.Text style={[styles.label, labelStyle]}>
+              Reload
+            </Animated.Text>
             <Icon name="reload" size={20} color="#555" />
           </Animated.View>
         </TouchableWithoutFeedback>
 
         <TouchableWithoutFeedback onPress={this.toggleOpen}>
           <View style={[styles.button, styles.pay]}>
-            <Animated.Text style={[styles.label, labelStyle]}>Pay</Animated.Text>
+            <Animated.Text style={[styles.label, labelStyle]}>
+              Pay
+            </Animated.Text>
             <Text style={styles.payText}>$5.00</Text>
           </View>
         </TouchableWithoutFeedback>
@@ -114,7 +124,7 @@ export default class FabButtonMenu extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   background: {
     backgroundColor: "rgba(0,0,0,.2)",

@@ -155,7 +155,8 @@ export default class PG_FabButtonMenu extends Component {
 
     const labelPositionInterpolate = this.state.animation.interpolate({
       inputRange: [0, 1],
-      outputRange: [-30, -55]
+      // outputRange: [-30, -55]
+      outputRange: [0, -55] // works the same
     });
 
     const opacityInterpolate = this.state.animation.interpolate({

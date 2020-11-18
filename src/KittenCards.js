@@ -55,7 +55,9 @@ export default class KittenCards extends Component {
       onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponder: () => true,
       // Animated.event is a helper function to map arbitrary data to Animated values.
-      // Since here we don't need gestrureState, we use Animated.event
+      // Since here we don't need gestrureState,
+      // (like: (e, gestureState) => {...)
+      // we use Animated.event
       onPanResponderMove: Animated.event([
         null,
         {

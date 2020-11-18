@@ -10,7 +10,7 @@ import PG_CreateAnimatedComp from "./src/PG_CreateAnimatedComp";
 import SetNativeProps from "./src/SetNativeProps";
 import Hidden from "./src/Hidden";
 import Point99Cliff from "./src/Point99Cliff";
-import PsointerEvents from "./src/PointerEvents";
+import PointerEvents from "./src/PointerEvents";
 import $4Corners from "./src/4Corners";
 import StaggerHeads from "./src/StaggerHeads";
 import KittenCards from "./src/KittenCards";
@@ -87,24 +87,24 @@ const App = () => {
     // <CreateAnimatedComp />
     // <PG_CreateAnimatedComp />
     // <SetNativeProps />
-    <Point99Cliff />
-    // <Hidden/>
-    // <PointerEvents/>
-    // <$4Corners/>
+    // <Point99Cliff />
+    // <Hidden />
+    // <PointerEvents />
+    // <$4Corners />
     // <PG_4Corners />
-    // <StaggerHeads/>
-    // <KittenCards/>
-    // <PG_KittenCards/>
-    // <StaggerFormFields/>
-    // <ButtonWithProgress/>
-    // <AnimatedQuestionnaire/>
+    // <StaggerHeads />
+    // <KittenCards />
+    // <PG_KittenCards />
+    // <StaggerFormFields />
+    // <ButtonWithProgress />
+    // <AnimatedNotification />
+    // <AnimatedQuestionnaire />
     // <PG_AnimatedQuestionnaire/>
-    // <AnimatedNotification/>
-    // <PG_AnimatedNotification/>
-    // <PhotoGrid/>
-    // <ColorPicker/>
+    // <PG_AnimatedNotification />
+    // <PhotoGrid />
+    // <ColorPicker />
     // <PG_ColorPicker />
-    // <FabButtonMenu/>
+    <FabButtonMenu />
     // <PG_FabButtonMenu />
     // <IntroScreens/>
     // <PG_IntroScreens/>

@@ -27,7 +27,7 @@ export default class PG_4Corners extends Component {
         easing: Easing.bounce
       }),
       Animated.timing(this.state.animation.y, {
-        toValue: height - this._height,
+        toValue: height - this._height, // or - 150
         duration: 800
       }),
       Animated.timing(this.state.anim_height, {
@@ -40,7 +40,7 @@ export default class PG_4Corners extends Component {
         easing: Easing.bounce
       }),
       Animated.timing(this.state.animation.x, {
-        toValue: width - this._width,
+        toValue: width - this._width, // or - 150
         duration: 800
       }),
       Animated.timing(this.state.anim_width, {
