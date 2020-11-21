@@ -33,7 +33,7 @@ const getScreen1Styles = (animation, width) => {
 
 const getScreen2Styles = (animation, width) => {
   // Here we have an input and an output animation
-  // 0= entrance, width=stable position, width * 2=exit
+  // 0 = entrance, width = stable position, width * 2 = exit
   const inputRange = [0, width, width * 2];
 
   const image2TranslateY = animation.interpolate({
@@ -43,7 +43,7 @@ const getScreen2Styles = (animation, width) => {
   });
 
   const image2Opacity = animation.interpolate({
-    // inputRange is different than the given code
+    // inputRange is different than the lecture's code
     inputRange: [0, width / 2, width, width * 2],
     outputRange: [0, 0, 1, 0],
     extrapolate: "clamp"
@@ -117,11 +117,11 @@ export default class IntroScreens extends Component {
         using the scrollEventThrottle prop. 
         The event has the shape 
         { nativeEvent: { 
-                    contentInset: { bottom, left, right, top }, 
-                    contentOffset: { x, y }, 
-                    contentSize: { height, width }, 
-                    layoutMeasurement: { height, width }, zoomScale } 
-                    }
+          contentInset: { bottom, left, right, top }, 
+          contentOffset: { x, y }, 
+          contentSize: { height, width }, 
+          layoutMeasurement: { height, width }, zoomScale } 
+          }
         All values are numbers. */
 
     return (

@@ -25,6 +25,7 @@ import FabButtonMenu from "./src/FabButtonMenu";
 import IntroScreens from "./src/IntroScreens";
 import EvolvingButton from "./src/EvolvingButton";
 import AnimatedSwipeAway from "./src/AnimatedSwipeAway";
+import PG_AnimatedSwipeAway from "./src/PG_AnimatedSwipeAway";
 
 import PG_Decay from "./src/PG_Decay";
 import PG_KittenCards from "./src/PG_KittenCards";
@@ -104,13 +105,14 @@ const App = () => {
     // <PhotoGrid />
     // <ColorPicker />
     // <PG_ColorPicker />
-    <FabButtonMenu />
+    // <FabButtonMenu />
     // <PG_FabButtonMenu />
-    // <IntroScreens/>
-    // <PG_IntroScreens/>
-    // <EvolvingButton/>
+    // <IntroScreens />
+    // <PG_IntroScreens />
+    // <EvolvingButton />
     // <PG_EvolvingButton />
-    // <AnimatedSwipeAway/>
+    // <AnimatedSwipeAway />
+    <PG_AnimatedSwipeAway />
     // <HorizontalParallaxScrollView />
     // <PG_HorizontalParallaxScrollView/>
     // <FloatingHearts/>
