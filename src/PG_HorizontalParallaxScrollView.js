@@ -39,9 +39,9 @@ const getInterpolate = (animatedScroll, i, imageLength) => {
     i * width,
     (i + 1) * width
   ];
-  // const outputRange = i === 0 ? [0, 0, 150] : [-300, 0, 150];
-  // This seems to work fine too!
-  // const outputRange = [0, 0, 150]
+  const outputRange = i === 0 ? [0, 0, 150] : [-300, 0, 150];
+  // This creates another effect!
+  // const outputRange = [0, 0, 150];
 
   return animatedScroll.interpolate({
     inputRange,
@@ -54,11 +54,13 @@ const getSeparator = i => {
   return (
     <View
       key={i}
-      // left: (i - 1) * width - 2.5} = this will cause the separator
+      // {left: (i - 1) * width - 2.5} = this will cause the separator
       // to be right in the middle of both images.
-      // It looks like the behavior of { left: i * width} is also acceptable.
+      // It looks like all the bellow styles are acceptable.
+      style={[styles.separator, { left: (i - 1) * width - 2.5 }]}
       // style={[styles.separator, {left: (i - 1) * width - 5.5}]}
-      style={[styles.separator, { left: i * width - 5}]}
+      // style={[styles.separator, { left: i * width - 5 }]}
+      // style={[styles.separator, { left: i * width }]}
     />
   );
 };
@@ -87,7 +89,7 @@ export default class PG_HorizontalParallaxScrollView extends React.Component {
                   }
                 }
               }
-            ],
+            ]
             // { listener: event => console.log(event) }
           )}
         >

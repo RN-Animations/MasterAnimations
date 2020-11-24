@@ -83,7 +83,7 @@ export default class HorizontalParallaxScrollView extends React.Component {
                   }
                 }
               }
-            ],
+            ]
             // { listener: event => console.log(event) }
           )}
         >
@@ -91,7 +91,7 @@ export default class HorizontalParallaxScrollView extends React.Component {
             return (
               <Moment
                 key={i}
-                {...image}
+                {...image} // to pass the properties: image and title. translateX we have bellow.
                 translateX={getInterpolate(
                   this.state.animatedScroll,
                   i,

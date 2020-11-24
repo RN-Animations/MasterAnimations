@@ -112,14 +112,14 @@ const App = () => {
     // <EvolvingButton />
     // <PG_EvolvingButton />
     // <AnimatedSwipeAway />
-    <PG_AnimatedSwipeAway />
+    // <PG_AnimatedSwipeAway />
     // <HorizontalParallaxScrollView />
-    // <PG_HorizontalParallaxScrollView/>
-    // <FloatingHearts/>
+    // <PG_HorizontalParallaxScrollView />
+    // <FloatingHearts />
     // <PG_FloatingHearts />
     // <BouncingHeartButton />
     // <ExplodingHeartButton />
-    // <ExpandingNotifyInput />
+    <ExpandingNotifyInput />~
   );
 };
 
@@ -129,6 +129,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   }
-});
+})
 
 export default App;

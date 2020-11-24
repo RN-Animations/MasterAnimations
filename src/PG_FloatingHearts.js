@@ -101,8 +101,8 @@ export default class PG_FloatingHearts extends Component {
       </View>
     );
   }
-} 
-  
+}
+
 const Heart = ({ style }) => (
   <Animated.View style={[styles.heart, style]}>
     <View style={[styles.heartShape, styles.leftHeart]} />
@@ -122,20 +122,20 @@ const styles = StyleSheet.create({
   heartShape: {
     width: 30,
     height: 45,
-    // position: "absolute",
+    position: "absolute",
     top: 0,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: "grey"
   },
   leftHeart: {
-    margin: 25,
-    // transform: [{ rotate: "-5deg" }],
+    margin: 10,
+    transform: [{ rotate: "45deg" }],
     left: 5
   },
   rightHeart: {
-    margin: 25,
-    // transform: [{ rotate: "5deg" }],
+    margin: 10,
+    transform: [{ rotate: "-45deg" }],
     right: 5
-  },
+  }
 });

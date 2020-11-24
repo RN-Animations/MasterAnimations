@@ -53,6 +53,8 @@ export default class FloatingHearts extends Component {
         <TouchableWithoutFeedback onPress={this.handleAddHeart}>
           <View style={StyleSheet.absoluteFill}>
             {this.state.hearts.map(({ animation, start }, index) => {
+              // console.log("hearts", this.state.hearts);
+
               const positionInterpolate = animation.interpolate({
                 inputRange: [0, height],
                 outputRange: [height - 50, 0]
